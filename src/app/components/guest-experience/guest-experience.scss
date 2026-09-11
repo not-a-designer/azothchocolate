@@ -1,0 +1,119 @@
+.guest-experience {
+  padding: var(--section-padding) 0;
+  background: var(--cream-light);
+}
+
+.journey-header {
+  margin-bottom: clamp(3rem, 6vw, 5.5rem);
+}
+
+.journey-header .section-heading {
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+}
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.72fr) minmax(360px, 1.25fr) minmax(230px, 0.7fr);
+  align-items: stretch;
+}
+
+.details {
+  margin: 0;
+  padding: 1rem clamp(1.5rem, 3vw, 3rem) 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  border-right: 1px solid var(--border-soft);
+  list-style: none;
+}
+
+.details li {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 560;
+}
+
+.details span {
+  color: var(--beer);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+}
+
+.journey-image {
+  min-height: 430px;
+  margin: 0;
+  overflow: hidden;
+  background: var(--neutral);
+}
+
+.journey-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+blockquote {
+  margin: 0;
+  padding: clamp(2rem, 4vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--cream);
+}
+
+.quote-mark {
+  height: 3rem;
+  color: var(--beer);
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 1;
+}
+
+blockquote p {
+  margin-bottom: 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2.6vw, 2.5rem);
+  font-weight: 430;
+  line-height: 1.12;
+}
+
+blockquote footer {
+  color: color-mix(in srgb, var(--chocolate) 68%, transparent);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 1000px) {
+  .journey-grid {
+    grid-template-columns: 0.75fr 1.25fr;
+  }
+
+  blockquote {
+    grid-column: 1 / -1;
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 680px) {
+  .journey-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .details {
+    padding: 0 0 2.5rem;
+    border-right: 0;
+  }
+
+  .journey-image {
+    min-height: 340px;
+  }
+
+  blockquote {
+    grid-column: auto;
+    min-height: 0;
+  }
+}

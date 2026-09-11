@@ -1,0 +1,14 @@
+<section class="experiences" id="experiences">
+  <div class="container">
+    <header class="section-intro">
+      <p class="eyebrow">Three Ways to Pair</p>
+      <h2 class="section-heading">One ingredient.<br />Three perspectives.</h2>
+    </header>
+
+    <div class="experience-grid">
+      @for (experience of experiences; track experience.name) {
+        <experience-card [experience]="experience" />
+      }
+    </div>
+  </div>
+</section>

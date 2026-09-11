@@ -1,0 +1,33 @@
+<header class="header">
+  <div class="container header-inner">
+    <a href="#top" class="brand" aria-label="Azoth Chocolate home" (click)="closeMenu()">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-logo" aria-hidden="true"></span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-controls="primary-navigation"
+      [attr.aria-expanded]="menuOpen()"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      id="primary-navigation"
+      class="nav"
+      aria-label="Primary navigation"
+      [class.open]="menuOpen()"
+    >
+      <a href="#experiences" (click)="closeMenu()">Experiences</a>
+      <a href="#journey" (click)="closeMenu()">Guest Journey</a>
+      <a href="#process" (click)="closeMenu()">How It Works</a>
+      <a href="#about" (click)="closeMenu()">About</a>
+      <a href="#inquire" class="host-link" (click)="closeMenu()">Host an Experience</a>
+    </nav>
+  </div>
+</header>

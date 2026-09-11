@@ -1,0 +1,105 @@
+.footer {
+  padding: 1rem 0 2rem;
+  background: var(--coffee);
+  color: var(--cream-light);
+}
+
+.footer-grid {
+  padding: 3.5rem 0;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.25fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+}
+
+.brand {
+  width: 190px;
+  min-height: 48px;
+  margin-bottom: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.brand-mark {
+  width: 2rem;
+  height: 2.75rem;
+  display: block;
+  flex: 0 0 auto;
+  background: currentColor;
+  -webkit-mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
+  mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
+}
+
+.brand-logo {
+  height: 2.75rem;
+  display: block;
+  flex: 1 1 auto;
+  background: currentColor;
+  -webkit-mask: url('/assets/logo-text-1.svg') left center / contain no-repeat;
+  mask: url('/assets/logo-text-1.svg') left center / contain no-repeat;
+}
+
+.footer-brand p {
+  max-width: 330px;
+  margin-bottom: 0;
+  color: color-mix(in srgb, var(--cream) 56%, transparent);
+  font-size: 0.76rem;
+}
+
+.footer-nav,
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer-nav > span,
+.footer-contact > span {
+  margin-bottom: 0.65rem;
+  color: var(--beer);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.footer-nav a,
+.footer-contact a {
+  width: fit-content;
+  color: color-mix(in srgb, var(--cream) 70%, transparent);
+  font-size: 0.76rem;
+  transition: color 160ms ease;
+}
+
+.footer-nav a:hover,
+.footer-contact a:hover {
+  color: var(--cream-light);
+}
+
+.copyright {
+  padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--cream) 12%, transparent);
+  color: color-mix(in srgb, var(--cream) 36%, transparent);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 760px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-brand {
+    grid-column: auto;
+  }
+}

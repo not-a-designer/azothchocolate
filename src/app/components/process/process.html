@@ -1,0 +1,25 @@
+<section class="process" id="process">
+  <div class="container">
+    <header class="process-header">
+      <p class="eyebrow">How It Works</p>
+      <h2 class="section-heading">Designed with your venue,<br />not around it.</h2>
+      <p class="process-intro">
+        Each event is developed as a collaboration so the chocolate supports the beverages and
+        identity already at the center of your venue.
+      </p>
+    </header>
+
+    <div class="steps">
+      @for (step of steps; track step.number) {
+        <article class="step">
+          <div class="step-icon" aria-hidden="true">
+            <azoth-icon [name]="step.icon" />
+          </div>
+          <span class="step-number">{{ step.number }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

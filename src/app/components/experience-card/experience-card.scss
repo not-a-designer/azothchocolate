@@ -1,0 +1,103 @@
+:host {
+  display: block;
+}
+
+.experience-card {
+  --accent: var(--coffee);
+  position: relative;
+  min-height: 570px;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--cream-light);
+  box-shadow: 0 1rem 2.75rem color-mix(in srgb, var(--chocolate) 5.5%, transparent);
+  text-align: center;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-6px);
+  padding: 1.5rem;
+  box-shadow: 0 1.5rem 3.5rem color-mix(in srgb, var(--chocolate) 11%, transparent);
+  .description {
+    font-size: 0.91rem;
+    transition: font-size 220ms ease-out;
+  }
+}
+
+.coffee {
+  --accent: var(--coffee);
+}
+
+.beer {
+  --accent: var(--beer);
+}
+
+.wine {
+  --accent: var(--wine);
+}
+
+.accent {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--accent);
+}
+
+.number {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.6rem;
+  color: color-mix(in srgb, var(--chocolate) 28%, transparent);
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+}
+
+.program-logo {
+  width: clamp(7.25rem, 9vw, 8.5rem);
+  height: auto;
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+  display: block;
+}
+
+.description {
+  max-width: 19rem;
+  margin-bottom: 0;
+  color: color-mix(in srgb, var(--chocolate) 72%, transparent);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 850px) {
+  .experience-card {
+    min-height: 500px;
+    padding: 2rem;
+  }
+
+  .program-logo {
+    width: clamp(7rem, 18vw, 8rem);
+    margin-bottom: 1.75rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .experience-card {
+    min-height: 470px;
+    padding: 1.75rem;
+  }
+
+  .program-logo {
+    width: 6.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.84rem;
+    line-height: 1.6;
+  }
+}

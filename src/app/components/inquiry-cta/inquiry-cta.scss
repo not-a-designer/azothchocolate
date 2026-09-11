@@ -1,0 +1,72 @@
+.inquiry {
+  padding: 0 0 4rem;
+  background: var(--coffee);
+}
+
+.inquiry-inner {
+  min-height: 230px;
+  padding: clamp(2rem, 4vw, 4rem);
+  display: grid;
+  grid-template-columns: 0.5fr 1.4fr 0.75fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  background: var(--cream-light);
+  color: var(--chocolate);
+}
+
+.inquiry-decoration {
+  width: min(100%, 82px);
+  aspect-ratio: 129.74 / 225.13;
+  margin-inline: auto;
+  background: currentColor;
+  color: var(--beer);
+  -webkit-mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
+  mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
+}
+
+.inquiry-copy {
+  text-align: center;
+}
+
+.inquiry-copy .eyebrow {
+  margin-bottom: 1rem;
+}
+
+.inquiry-copy h2 {
+  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 4rem);
+  font-weight: 430;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.inquiry-copy > p:not(.eyebrow) {
+  max-width: 520px;
+  margin: 0 auto;
+  color: color-mix(in srgb, var(--chocolate) 68%, transparent);
+  font-size: 0.82rem;
+}
+
+.inquiry-action {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.7rem;
+  text-align: center;
+}
+
+.inquiry-action span:not(.btn span) {
+  color: color-mix(in srgb, var(--chocolate) 65%, transparent);
+  font-size: 0.68rem;
+}
+
+@media (max-width: 900px) {
+  .inquiry-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .inquiry-decoration {
+    width: 68px;
+  }
+}

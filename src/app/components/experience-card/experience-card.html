@@ -1,0 +1,38 @@
+<article class="experience-card" [class]="experience.modifier" style="color: --accent">
+  <span class="accent" aria-hidden="true"></span>
+
+  <h3 class="sr-only">{{ experience.name }}</h3>
+  @switch (experience.modifier) {
+    @case ('coffee') {
+      <img
+        class="program-logo"
+        src="/assets/coffee-1.svg"
+        alt="Cacao and Cup"
+        width="164"
+        height="465"
+        aria-hidden="true"
+      />
+    }
+    @case ('beer') {
+      <img
+        class="program-logo"
+        src="/assets/beer-1.svg"
+        alt="Cacao and Craft"
+        width="164"
+        height="465"
+        aria-hidden="true"
+      />
+    }
+    @case ('wine') {
+      <img
+        class="program-logo"
+        src="/assets/wine-1.svg"
+        alt="Cacao and Vine"
+        width="164"
+        height="465"
+        aria-hidden="true"
+      />
+    }
+  }
+  <p class="description" style="color: var(--accent)">{{ experience.description }}</p>
+</article>
