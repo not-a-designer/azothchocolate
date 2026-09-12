@@ -53,7 +53,8 @@ Create an optimized production build:
 npm run build
 ```
 
-The production artifacts are written to `dist/azoth`.
+The production artifacts are written to `dist/cloudflare`. The browser-ready files
+deployed to Cloudflare Workers are in `dist/cloudflare/browser`.
 
 To run the built SSR application locally:
 
@@ -82,7 +83,20 @@ The page uses fragment navigation and remains a single-page experience. Hosting 
 
 ## Deployment
 
-The current Angular build supports prerendering and a Node SSR entry point. For a fully static host, change the Angular build `outputMode` to `static` before configuring the deployment provider. Set the canonical URL and absolute social-preview URL after the production domain is chosen.
+The landing page is deployed as prerendered static assets on Cloudflare Workers.
+The Worker configuration in `wrangler.jsonc` uploads `dist/cloudflare/browser`
+and provides an SPA fallback for navigation requests.
+
+In Cloudflare Workers Builds, use:
+
+```text
+Build command: npm run build
+Deploy command: npx wrangler deploy
+Root directory: /
+```
+
+Pushes to the production branch will build and deploy the site to the Worker and
+its configured custom domains.
 
 ## Rights
 
