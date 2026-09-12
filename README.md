@@ -79,7 +79,7 @@ src/
 
 Azoth's logo artwork and the Cacao & Cup, Cacao & Craft, and Cacao & Vine program marks live in `src/assets`. Keep their proportions intact when placing them in new layouts.
 
-The page uses fragment navigation and remains a single-page experience. Hosting inquiries open a pre-addressed email to `hello@azothchocolate.com`; there is no form backend.
+The page uses fragment navigation and remains a single-page experience. Hosting inquiries open a pre-addressed email to `joel@azothchocolate.com`; there is no form backend.
 
 ## Deployment
 
