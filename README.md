@@ -70,7 +70,9 @@ public/
 src/
   app/
     components/           Landing-page sections and shared icon component
+    data/                 Single source of truth for the current event
     declarations/         Shared application interfaces
+    pages/                Routed home and event-page compositions
   assets/                 Azoth and pairing-program SVG artwork
   styles.scss             Global tokens, reset, typography, and utilities
 ```
@@ -80,6 +82,20 @@ src/
 Azoth's logo artwork and the Cacao & Cup, Cacao & Craft, and Cacao & Vine program marks live in `src/assets`. Keep their proportions intact when placing them in new layouts.
 
 The page uses fragment navigation and remains a single-page experience. Hosting inquiries open a pre-addressed email to `joel@azothchocolate.com`; there is no form backend.
+
+## Updating the event page
+
+The permanent guest-facing event URL is
+[`https://azothchocolate.com/events`](https://azothchocolate.com/events). Edit
+`src/app/data/event.data.ts` to publish the current four-course tasting flight.
+
+- Replace `null` with one `TastingEvent` object.
+- Keep exactly four pairings, numbered `01` through `04`.
+- Set each pairing position to `Accessible`, `Complementary`, `Technical`, or `Surprise`.
+- Update the event details and `updatedAt` label, then run the tests and production build.
+- Leave the completed event in place until the next event is ready to replace it.
+
+When no event has been entered, the route shows a branded holding state without sample products.
 
 ## Deployment
 

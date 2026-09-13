@@ -1,0 +1,176 @@
+<div class="event-shell">
+  <a class="skip-link" href="#event-content">Skip to event details</a>
+
+  <header class="event-header">
+    <div class="container event-header-inner">
+      <a href="/" class="event-brand" aria-label="Azoth Chocolate home">
+        <span class="event-brand-mark" aria-hidden="true"></span>
+        <span class="event-brand-logo" aria-hidden="true"></span>
+      </a>
+      <span class="event-header-label">Guest tasting guide</span>
+    </div>
+  </header>
+
+  <main id="event-content">
+    @if (event(); as currentEvent) {
+      <section class="event-hero" aria-labelledby="event-title">
+        <div class="event-watermark" aria-hidden="true"></div>
+        <div class="container event-hero-grid">
+          <div class="event-introduction">
+            <p class="eyebrow">Current Tasting</p>
+            <h1 id="event-title" class="display-heading">{{ currentEvent.title }}</h1>
+            <p class="event-summary">{{ currentEvent.introduction }}</p>
+            <p class="event-updated">Last updated {{ currentEvent.updatedAt }}</p>
+          </div>
+
+          @if (
+            currentEvent.date ||
+            currentEvent.time ||
+            currentEvent.venue ||
+            currentEvent.partner ||
+            currentEvent.location
+          ) {
+            <dl class="event-facts" aria-label="Event information">
+              @if (currentEvent.date) {
+                <div>
+                  <dt>Date</dt>
+                  <dd>{{ currentEvent.date }}</dd>
+                </div>
+              }
+              @if (currentEvent.time) {
+                <div>
+                  <dt>Time</dt>
+                  <dd>{{ currentEvent.time }}</dd>
+                </div>
+              }
+              @if (currentEvent.venue) {
+                <div>
+                  <dt>Venue</dt>
+                  <dd>{{ currentEvent.venue }}</dd>
+                </div>
+              }
+              @if (currentEvent.partner) {
+                <div>
+                  <dt>Presented with</dt>
+                  <dd>{{ currentEvent.partner }}</dd>
+                </div>
+              }
+              @if (currentEvent.location) {
+                <div>
+                  <dt>Location</dt>
+                  <dd>{{ currentEvent.location }}</dd>
+                </div>
+              }
+            </dl>
+          }
+        </div>
+      </section>
+
+      <section class="event-pairings" aria-labelledby="pairings-title">
+        <div class="container">
+          <div class="pairings-intro">
+            <div>
+              <p class="eyebrow">The Tasting Flight</p>
+              <h2 id="pairings-title" class="section-heading">
+                Four pairings,<br />one progression.
+              </h2>
+            </div>
+            <p>Each course brings one fine chocolate and one beverage together in sequence.</p>
+          </div>
+
+          <ol class="pairing-grid" aria-label="Four chocolate and beverage pairings">
+            @for (pairing of currentEvent.pairings; track pairing.number) {
+              <li>
+                <article
+                  class="pairing-card"
+                  [attr.aria-labelledby]="'pairing-' + pairing.number"
+                  [attr.data-position]="pairing.position"
+                >
+                  <header class="pairing-card-header">
+                    <span class="pairing-number" aria-hidden="true">{{ pairing.number }}</span>
+                    <span class="pairing-position">{{ pairing.position }}</span>
+                  </header>
+
+                  <h2 class="sr-only" [id]="'pairing-' + pairing.number">
+                    Pairing {{ pairing.number }}: {{ pairing.chocolate.name }} with
+                    {{ pairing.beverage.name }}
+                  </h2>
+
+                  <div class="pairing-match">
+                    <section class="pairing-item chocolate-item">
+                      <p class="pairing-kind">Chocolate</p>
+                      <h3>{{ pairing.chocolate.name }}</h3>
+                      <dl>
+                        <div>
+                          <dt>Maker</dt>
+                          <dd>{{ pairing.chocolate.maker }}</dd>
+                        </div>
+                        <div>
+                          <dt>Cacao</dt>
+                          <dd>{{ pairing.chocolate.cacaoPercentage }}</dd>
+                        </div>
+                        <div>
+                          <dt>Origin</dt>
+                          <dd>{{ pairing.chocolate.origin }}</dd>
+                        </div>
+                      </dl>
+                    </section>
+
+                    <span class="pairing-connector" aria-hidden="true">&amp;</span>
+
+                    <section class="pairing-item beverage-item">
+                      <p class="pairing-kind">Beverage</p>
+                      <h3>{{ pairing.beverage.name }}</h3>
+                      <dl>
+                        <div>
+                          <dt>Producer</dt>
+                          <dd>{{ pairing.beverage.producer }}</dd>
+                        </div>
+                        <div>
+                          <dt>Style</dt>
+                          <dd>{{ pairing.beverage.style }}</dd>
+                        </div>
+                      </dl>
+                    </section>
+                  </div>
+                </article>
+              </li>
+            }
+          </ol>
+        </div>
+      </section>
+    } @else {
+      <section class="event-holding" aria-labelledby="holding-title">
+        <div class="holding-watermark" aria-hidden="true"></div>
+        <div class="container holding-content">
+          <p class="eyebrow">Event Tasting Guide</p>
+          <h1 id="holding-title" class="display-heading">
+            Your tasting details<br />are being prepared.
+          </h1>
+          <p>
+            The chocolate and beverage flight for this event will appear here before the tasting.
+            Please check back closer to the event.
+          </p>
+          <div class="holding-actions">
+            <a class="btn btn-primary" href="/">Visit Azoth Chocolate</a>
+            <a
+              class="text-link"
+              href="mailto:joel@azothchocolate.com?subject=Azoth%20Event%20Tasting"
+              >Contact Joel</a
+            >
+          </div>
+        </div>
+      </section>
+    }
+  </main>
+
+  <footer class="event-footer">
+    <div class="container event-footer-inner">
+      <span>© {{ year }} Azoth Chocolate</span>
+      <div>
+        <a href="/">AzothChocolate.com</a>
+        <a href="mailto:joel@azothchocolate.com">joel@azothchocolate.com</a>
+      </div>
+    </div>
+  </footer>
+</div>
