@@ -19,17 +19,29 @@ describe('Experiences', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render all three pairing experiences with their modifiers', () => {
+  it('should render all four tasting experiences with their modifiers', () => {
     const cards = [...fixture.nativeElement.querySelectorAll('article')] as HTMLElement[];
     const headings = cards.map((card) => card.querySelector('h3')?.textContent?.trim());
 
-    expect(cards).toHaveLength(3);
-    expect(headings).toEqual(['Cacao & Cup', 'Cacao & Craft', 'Cacao & Vine']);
-    expect(cards.map((card) => card.classList.item(1))).toEqual(['coffee', 'beer', 'wine']);
+    expect(cards).toHaveLength(4);
+    expect(headings).toEqual(['Cacao & Cup', 'Cacao & Craft', 'Cacao & Vine', 'Cacao & Cocoa']);
+    expect(cards.map((card) => card.classList.item(1))).toEqual([
+      'coffee',
+      'beer',
+      'wine',
+      'cocoa',
+    ]);
     expect(cards.map((card) => card.querySelector('img')?.getAttribute('src'))).toEqual([
       '/assets/coffee-1.svg',
       '/assets/beer-1.svg',
       '/assets/wine-1.svg',
+      '/assets/cocoa-1.svg',
     ]);
+    expect(fixture.nativeElement.querySelector('.eyebrow')?.textContent).toContain(
+      'Four Ways to Taste',
+    );
+    expect(fixture.nativeElement.querySelector('.section-heading')?.textContent).toContain(
+      'Four perspectives',
+    );
   });
 });

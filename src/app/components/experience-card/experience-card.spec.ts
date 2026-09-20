@@ -36,4 +36,22 @@ describe('ExperienceCard', () => {
       '/assets/coffee-1.svg',
     );
   });
+
+  it('should render the chocolate-only program artwork and accessible heading', async () => {
+    fixture.componentRef.setInput('experience', {
+      name: 'Cacao & Cocoa',
+      subtitle: 'Chocolate',
+      modifier: 'cocoa',
+      description: 'A focused four-sample chocolate tasting.',
+    } satisfies Experience);
+    await fixture.whenStable();
+
+    const card = fixture.nativeElement.querySelector('article') as HTMLElement;
+    const heading = fixture.nativeElement.querySelector('h3') as HTMLElement;
+    const image = fixture.nativeElement.querySelector('img') as HTMLImageElement;
+
+    expect(card.classList.contains('cocoa')).toBe(true);
+    expect(heading.textContent).toContain('Cacao & Cocoa');
+    expect(image.getAttribute('src')).toBe('/assets/cocoa-1.svg');
+  });
 });

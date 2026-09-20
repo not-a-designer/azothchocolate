@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Meta, Title } from '@angular/platform-browser';
-import { TastingEvent } from '../../declarations/interfaces';
+import { ChocolateTastingEvent, PairedTastingEvent } from '../../declarations/interfaces';
 import { EventsPage } from './events';
 
-const mockEvent: TastingEvent = {
+const mockEvent: PairedTastingEvent = {
+  format: 'paired',
   title: 'Autumn Pairing Session',
   date: 'October 18, 2026',
   time: '6:30 PM',
@@ -76,6 +77,53 @@ const mockEvent: TastingEvent = {
   ],
 };
 
+const mockChocolateEvent: ChocolateTastingEvent = {
+  format: 'chocolate-only',
+  title: 'Cacao & Cocoa',
+  date: 'November 7, 2026',
+  venue: 'Example Community Room',
+  introduction: 'A guided progression through four expressions of fine chocolate.',
+  updatedAt: 'November 5, 2026',
+  samples: [
+    {
+      number: '01',
+      chocolate: {
+        name: 'Chocolate One',
+        maker: 'Maker One',
+        cacaoPercentage: '55%',
+        origin: 'Origin One',
+      },
+    },
+    {
+      number: '02',
+      chocolate: {
+        name: 'Chocolate Two',
+        maker: 'Maker Two',
+        cacaoPercentage: '65%',
+        origin: 'Origin Two',
+      },
+    },
+    {
+      number: '03',
+      chocolate: {
+        name: 'Chocolate Three',
+        maker: 'Maker Three',
+        cacaoPercentage: '72%',
+        origin: 'Origin Three',
+      },
+    },
+    {
+      number: '04',
+      chocolate: {
+        name: 'Chocolate Four',
+        maker: 'Maker Four',
+        cacaoPercentage: '80%',
+        origin: 'Origin Four',
+      },
+    },
+  ],
+};
+
 describe('EventsPage', () => {
   let fixture: ComponentFixture<EventsPage>;
 
@@ -130,6 +178,30 @@ describe('EventsPage', () => {
     ).toBeTruthy();
     expect(page.querySelectorAll('.pairing-card[aria-labelledby]')).toHaveLength(4);
     expect(page.querySelectorAll('.pairing-card h2.sr-only')).toHaveLength(4);
+  });
+
+  it('should render exactly four ordered chocolate samples without beverage fields', async () => {
+    fixture.componentRef.setInput('event', mockChocolateEvent);
+    await fixture.whenStable();
+    const page = fixture.nativeElement as HTMLElement;
+    const samples = [...page.querySelectorAll<HTMLElement>('.chocolate-flight > li')];
+
+    expect(samples).toHaveLength(4);
+    expect(page.querySelector('#flight-title')?.textContent).toContain('Four chocolates');
+    expect(page.querySelector('ol[aria-label="Four chocolate samples"]')).toBeTruthy();
+    expect(page.querySelectorAll('.sample-card[aria-labelledby]')).toHaveLength(4);
+    expect(page.querySelector('.beverage-item')).toBeNull();
+    expect(page.querySelector('.pairing-position')).toBeNull();
+    expect(page.querySelector('.pairing-connector')).toBeNull();
+
+    for (const [index, sample] of samples.entries()) {
+      expect(sample.textContent).toContain(mockChocolateEvent.samples[index].chocolate.name);
+      expect(sample.textContent).toContain(mockChocolateEvent.samples[index].chocolate.maker);
+      expect(sample.textContent).toContain(
+        mockChocolateEvent.samples[index].chocolate.cacaoPercentage,
+      );
+      expect(sample.textContent).toContain(mockChocolateEvent.samples[index].chocolate.origin);
+    }
   });
 
   it('should set direct-link event metadata', async () => {

@@ -1,16 +1,17 @@
 # Azoth Chocolate
 
-An editorial landing page for Azoth Chocolate's educational fine-chocolate tasting and beverage-pairing experiences.
+An editorial site for Azoth Chocolate's educational fine-chocolate tastings and beverage-pairing experiences.
 
 ![Chocolate paired with wine, beer, and coffee](public/images/azoth-hero.png)
 
 ## About
 
-Azoth Chocolate collaborates with breweries, wineries, and coffee roasters to create guided tasting experiences around three programs:
+Azoth Chocolate creates guided tasting experiences through four programs:
 
 - Cacao & Cup — coffee pairings
 - Cacao & Craft — beer pairings
 - Cacao & Vine — wine pairings
+- Cacao & Cocoa — a four-sample chocolate tasting without beverage pairings
 
 The site presents the programs, guest journey, hosting process, founder credentials, and an email-based venue inquiry call to action.
 
@@ -79,9 +80,9 @@ src/
 
 ## Content and branding
 
-Azoth's logo artwork and the Cacao & Cup, Cacao & Craft, and Cacao & Vine program marks live in `src/assets`. Keep their proportions intact when placing them in new layouts.
+Azoth's logo artwork and all four program marks live in `src/assets`. Keep their proportions intact when placing them in new layouts.
 
-The page uses fragment navigation and remains a single-page experience. Hosting inquiries open a pre-addressed email to `joel@azothchocolate.com`; there is no form backend.
+The marketing page uses fragment navigation, while `/events` serves the current guest tasting guide. Hosting inquiries open a pre-addressed email to `joel@azothchocolate.com`; there is no form backend.
 
 ## Updating the event page
 
@@ -90,8 +91,10 @@ The permanent guest-facing event URL is
 `src/app/data/event.data.ts` to publish the current four-course tasting flight.
 
 - Replace `null` with one `TastingEvent` object.
-- Keep exactly four pairings, numbered `01` through `04`.
-- Set each pairing position to `Accessible`, `Complementary`, `Technical`, or `Surprise`.
+- Use `format: 'paired'` with exactly four `pairings`, or `format: 'chocolate-only'`
+  with exactly four `samples`, numbered `01` through `04`.
+- Paired events require beverage details and a position of `Accessible`, `Complementary`,
+  `Technical`, or `Surprise`; chocolate-only events accept chocolate details only.
 - Update the event details and `updatedAt` label, then run the tests and production build.
 - Leave the completed event in place until the next event is ready to replace it.
 

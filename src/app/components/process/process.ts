@@ -20,7 +20,8 @@ export class Process {
       number: '02',
       title: 'Develop',
       icon: 'develop',
-      description: 'We taste together and select chocolates that complement your beverages.',
+      description:
+        'We shape the tasting and select four fine chocolates, with beverage collaboration where applicable.',
     },
     {
       number: '03',
@@ -32,7 +33,8 @@ export class Process {
       number: '04',
       title: 'Host',
       icon: 'host',
-      description: 'Your venue serves its beverages while Azoth leads the guided experience.',
+      description:
+        'Azoth leads the guided experience while your venue supports the agreed service format.',
     },
   ];
 }

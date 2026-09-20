@@ -31,5 +31,12 @@ export class Experiences {
       description:
         'Discover how fruit, tannin, acidity, fermentation, and origin connect fine chocolate with carefully chosen wines.',
     },
+    {
+      name: 'Cacao & Cocoa',
+      subtitle: 'Chocolate',
+      modifier: 'cocoa',
+      description:
+        'A focused four-sample tasting exploring cacao history, origin, craft production, and flavor—no beverage pairing required.',
+    },
   ];
 }

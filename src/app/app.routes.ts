@@ -5,7 +5,7 @@ export const routes: Routes = [
     path: '',
     loadComponent: () => import('./pages/home/home').then((page) => page.HomePage),
     pathMatch: 'full',
-    title: 'Azoth Chocolate | Educational Chocolate Pairing Experiences',
+    title: 'Azoth Chocolate | Educational Chocolate Tasting Experiences',
   },
   {
     path: 'events',

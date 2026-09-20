@@ -66,77 +66,127 @@
         </div>
       </section>
 
-      <section class="event-pairings" aria-labelledby="pairings-title">
+      <section class="event-pairings" aria-labelledby="flight-title">
         <div class="container">
           <div class="pairings-intro">
             <div>
               <p class="eyebrow">The Tasting Flight</p>
-              <h2 id="pairings-title" class="section-heading">
-                Four pairings,<br />one progression.
-              </h2>
+              @if (currentEvent.format === 'paired') {
+                <h2 id="flight-title" class="section-heading">
+                  Four pairings,<br />one progression.
+                </h2>
+              } @else {
+                <h2 id="flight-title" class="section-heading">
+                  Four chocolates,<br />one progression.
+                </h2>
+              }
             </div>
-            <p>Each course brings one fine chocolate and one beverage together in sequence.</p>
+            @if (currentEvent.format === 'paired') {
+              <p>Each course brings one fine chocolate and one beverage together in sequence.</p>
+            } @else {
+              <p>Each sample reveals a different expression of cacao, tasted in sequence.</p>
+            }
           </div>
 
-          <ol class="pairing-grid" aria-label="Four chocolate and beverage pairings">
-            @for (pairing of currentEvent.pairings; track pairing.number) {
-              <li>
-                <article
-                  class="pairing-card"
-                  [attr.aria-labelledby]="'pairing-' + pairing.number"
-                  [attr.data-position]="pairing.position"
-                >
-                  <header class="pairing-card-header">
-                    <span class="pairing-number" aria-hidden="true">{{ pairing.number }}</span>
-                    <span class="pairing-position">{{ pairing.position }}</span>
-                  </header>
+          @if (currentEvent.format === 'paired') {
+            <ol class="pairing-grid" aria-label="Four chocolate and beverage pairings">
+              @for (pairing of currentEvent.pairings; track pairing.number) {
+                <li>
+                  <article
+                    class="pairing-card"
+                    [attr.aria-labelledby]="'pairing-' + pairing.number"
+                    [attr.data-position]="pairing.position"
+                  >
+                    <header class="pairing-card-header">
+                      <span class="pairing-number" aria-hidden="true">{{ pairing.number }}</span>
+                      <span class="pairing-position">{{ pairing.position }}</span>
+                    </header>
 
-                  <h2 class="sr-only" [id]="'pairing-' + pairing.number">
-                    Pairing {{ pairing.number }}: {{ pairing.chocolate.name }} with
-                    {{ pairing.beverage.name }}
-                  </h2>
+                    <h2 class="sr-only" [id]="'pairing-' + pairing.number">
+                      Pairing {{ pairing.number }}: {{ pairing.chocolate.name }} with
+                      {{ pairing.beverage.name }}
+                    </h2>
 
-                  <div class="pairing-match">
+                    <div class="pairing-match">
+                      <section class="pairing-item chocolate-item">
+                        <p class="pairing-kind">Chocolate</p>
+                        <h3>{{ pairing.chocolate.name }}</h3>
+                        <dl>
+                          <div>
+                            <dt>Maker</dt>
+                            <dd>{{ pairing.chocolate.maker }}</dd>
+                          </div>
+                          <div>
+                            <dt>Cacao</dt>
+                            <dd>{{ pairing.chocolate.cacaoPercentage }}</dd>
+                          </div>
+                          <div>
+                            <dt>Origin</dt>
+                            <dd>{{ pairing.chocolate.origin }}</dd>
+                          </div>
+                        </dl>
+                      </section>
+
+                      <span class="pairing-connector" aria-hidden="true">&amp;</span>
+
+                      <section class="pairing-item beverage-item">
+                        <p class="pairing-kind">Beverage</p>
+                        <h3>{{ pairing.beverage.name }}</h3>
+                        <dl>
+                          <div>
+                            <dt>Producer</dt>
+                            <dd>{{ pairing.beverage.producer }}</dd>
+                          </div>
+                          <div>
+                            <dt>Style</dt>
+                            <dd>{{ pairing.beverage.style }}</dd>
+                          </div>
+                        </dl>
+                      </section>
+                    </div>
+                  </article>
+                </li>
+              }
+            </ol>
+          } @else {
+            <ol class="pairing-grid chocolate-flight" aria-label="Four chocolate samples">
+              @for (sample of currentEvent.samples; track sample.number) {
+                <li>
+                  <article
+                    class="pairing-card sample-card"
+                    [attr.aria-labelledby]="'sample-' + sample.number"
+                  >
+                    <header class="pairing-card-header">
+                      <span class="pairing-number" aria-hidden="true">{{ sample.number }}</span>
+                    </header>
+
+                    <h2 class="sr-only" [id]="'sample-' + sample.number">
+                      Chocolate sample {{ sample.number }}: {{ sample.chocolate.name }}
+                    </h2>
+
                     <section class="pairing-item chocolate-item">
                       <p class="pairing-kind">Chocolate</p>
-                      <h3>{{ pairing.chocolate.name }}</h3>
+                      <h3>{{ sample.chocolate.name }}</h3>
                       <dl>
                         <div>
                           <dt>Maker</dt>
-                          <dd>{{ pairing.chocolate.maker }}</dd>
+                          <dd>{{ sample.chocolate.maker }}</dd>
                         </div>
                         <div>
                           <dt>Cacao</dt>
-                          <dd>{{ pairing.chocolate.cacaoPercentage }}</dd>
+                          <dd>{{ sample.chocolate.cacaoPercentage }}</dd>
                         </div>
                         <div>
                           <dt>Origin</dt>
-                          <dd>{{ pairing.chocolate.origin }}</dd>
+                          <dd>{{ sample.chocolate.origin }}</dd>
                         </div>
                       </dl>
                     </section>
-
-                    <span class="pairing-connector" aria-hidden="true">&amp;</span>
-
-                    <section class="pairing-item beverage-item">
-                      <p class="pairing-kind">Beverage</p>
-                      <h3>{{ pairing.beverage.name }}</h3>
-                      <dl>
-                        <div>
-                          <dt>Producer</dt>
-                          <dd>{{ pairing.beverage.producer }}</dd>
-                        </div>
-                        <div>
-                          <dt>Style</dt>
-                          <dd>{{ pairing.beverage.style }}</dd>
-                        </div>
-                      </dl>
-                    </section>
-                  </div>
-                </article>
-              </li>
-            }
-          </ol>
+                  </article>
+                </li>
+              }
+            </ol>
+          }
         </div>
       </section>
     } @else {
@@ -148,8 +198,8 @@
             Your tasting details<br />are being prepared.
           </h1>
           <p>
-            The chocolate and beverage flight for this event will appear here before the tasting.
-            Please check back closer to the event.
+            The tasting flight for this event will appear here before the experience. Please check
+            back closer to the event.
           </p>
           <div class="holding-actions">
             <a class="btn btn-primary" href="/">Visit Azoth Chocolate</a>

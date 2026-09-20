@@ -5,7 +5,7 @@ import { TastingEvent } from '../../declarations/interfaces';
 
 const EVENT_TITLE = 'Event Tasting | Azoth Chocolate';
 const EVENT_DESCRIPTION =
-  'The current Azoth Chocolate event tasting flight, with four guided chocolate and beverage pairings.';
+  'The current Azoth Chocolate event tasting guide, featuring four guided chocolate samples or pairings.';
 
 @Component({
   selector: 'azoth-events-page',

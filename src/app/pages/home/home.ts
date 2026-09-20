@@ -9,9 +9,9 @@ import { Hero } from '../../components/hero/hero';
 import { InquiryCta } from '../../components/inquiry-cta/inquiry-cta';
 import { Process } from '../../components/process/process';
 
-const HOME_TITLE = 'Azoth Chocolate | Educational Chocolate Pairing Experiences';
+const HOME_TITLE = 'Azoth Chocolate | Educational Chocolate Tasting Experiences';
 const HOME_DESCRIPTION =
-  'Approachable, educational fine-chocolate tasting experiences created with breweries, wineries, and coffee roasters.';
+  'Approachable, educational fine-chocolate tastings, from focused four-sample cacao explorations to pairings with coffee, beer, and wine.';
 
 @Component({
   imports: [Header, Hero, Experiences, GuestExperience, Process, About, InquiryCta, Footer],

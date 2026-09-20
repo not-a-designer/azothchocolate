@@ -4,7 +4,7 @@ export interface Experience {
   name: string;
   subtitle: string;
   description: string;
-  modifier: 'coffee' | 'beer' | 'wine';
+  modifier: 'coffee' | 'beer' | 'wine' | 'cocoa';
 }
 
 export interface ProcessStep {
@@ -16,7 +16,7 @@ export interface ProcessStep {
 
 export type PairingPosition = 'Accessible' | 'Complementary' | 'Technical' | 'Surprise';
 
-export type PairingNumber = '01' | '02' | '03' | '04';
+export type TastingNumber = '01' | '02' | '03' | '04';
 
 export interface EventChocolate {
   name: string;
@@ -32,7 +32,7 @@ export interface EventBeverage {
 }
 
 export interface EventPairing {
-  number: PairingNumber;
+  number: TastingNumber;
   position: PairingPosition;
   chocolate: EventChocolate;
   beverage: EventBeverage;
@@ -40,7 +40,19 @@ export interface EventPairing {
 
 export type EventFlight = readonly [EventPairing, EventPairing, EventPairing, EventPairing];
 
-export interface TastingEvent {
+export interface EventChocolateSample {
+  number: TastingNumber;
+  chocolate: EventChocolate;
+}
+
+export type ChocolateFlight = readonly [
+  EventChocolateSample,
+  EventChocolateSample,
+  EventChocolateSample,
+  EventChocolateSample,
+];
+
+interface TastingEventBase {
   title: string;
   date?: string;
   time?: string;
@@ -49,5 +61,16 @@ export interface TastingEvent {
   location?: string;
   introduction: string;
   updatedAt: string;
+}
+
+export interface PairedTastingEvent extends TastingEventBase {
+  format: 'paired';
   pairings: EventFlight;
 }
+
+export interface ChocolateTastingEvent extends TastingEventBase {
+  format: 'chocolate-only';
+  samples: ChocolateFlight;
+}
+
+export type TastingEvent = PairedTastingEvent | ChocolateTastingEvent;

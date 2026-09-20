@@ -189,6 +189,18 @@ main {
   box-shadow: 0 18px 50px color-mix(in srgb, var(--chocolate) 7%, transparent);
 }
 
+.sample-card {
+  border-top: 3px solid var(--chocolate);
+}
+
+.sample-card .pairing-card-header {
+  justify-content: flex-start;
+}
+
+.sample-card .pairing-item {
+  max-width: 28rem;
+}
+
 .pairing-card-header {
   margin-bottom: 1.75rem;
   display: flex;
