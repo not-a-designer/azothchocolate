@@ -36,7 +36,7 @@ export class Experiences {
       subtitle: 'Chocolate',
       modifier: 'cocoa',
       description:
-        'Taste four fine chocolates while exploring cacao history, origin, craft production, and flavor—no beverage required.',
+        'Taste four fine chocolates while exploring cacao history, origin, craft production, and flavor - no beverage required.',
     },
   ];
 }
