@@ -30,17 +30,6 @@
   min-height: 46px;
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-}
-
-.event-brand-mark {
-  width: 1.85rem;
-  height: 2.6rem;
-  display: block;
-  flex: 0 0 auto;
-  background: currentColor;
-  -webkit-mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
-  mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
 }
 
 .event-brand-logo {
@@ -405,11 +394,6 @@ main {
 
   .event-brand {
     width: 150px;
-  }
-
-  .event-brand-mark {
-    width: 1.55rem;
-    height: 2.25rem;
   }
 
   .event-brand-logo {

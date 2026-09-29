@@ -17,17 +17,6 @@
   margin-bottom: 1.5rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
-}
-
-.brand-mark {
-  width: 2rem;
-  height: 2.75rem;
-  display: block;
-  flex: 0 0 auto;
-  background: currentColor;
-  -webkit-mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
-  mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
 }
 
 .brand-logo {
