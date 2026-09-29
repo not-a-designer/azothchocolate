@@ -6,15 +6,15 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: var(--cream);
-  color: var(--chocolate);
+  background: var(--brand-cream);
+  color: var(--brand-chocolate);
 }
 
 .event-header {
   position: relative;
   z-index: 5;
   border-bottom: 1px solid var(--border-soft);
-  background: color-mix(in srgb, var(--cream-light) 70%, var(--cream));
+  background: color-mix(in srgb, var(--brand-cream-light) 70%, var(--brand-cream));
 }
 
 .event-header-inner {
@@ -53,7 +53,7 @@
 }
 
 .event-header-label {
-  color: color-mix(in srgb, var(--chocolate) 62%, transparent);
+  color: color-mix(in srgb, var(--brand-chocolate) 62%, transparent);
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -74,7 +74,7 @@ main {
 .holding-watermark {
   position: absolute;
   pointer-events: none;
-  background: color-mix(in srgb, var(--beer) 22%, transparent);
+  background: color-mix(in srgb, var(--brand-saffron) 22%, transparent);
   -webkit-mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
   mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
 }
@@ -108,13 +108,13 @@ main {
 .event-summary {
   max-width: 660px;
   margin: 2rem 0 0;
-  color: color-mix(in srgb, var(--chocolate) 76%, transparent);
+  color: color-mix(in srgb, var(--brand-chocolate) 76%, transparent);
   font-size: clamp(0.95rem, 1.3vw, 1.1rem);
 }
 
 .event-updated {
   margin: 1.5rem 0 0;
-  color: color-mix(in srgb, var(--chocolate) 52%, transparent);
+  color: color-mix(in srgb, var(--brand-chocolate) 52%, transparent);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -134,7 +134,7 @@ main {
 
 .event-facts dt,
 .pairing-item dt {
-  color: var(--wine);
+  color: var(--program-vine);
   font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -150,7 +150,7 @@ main {
 
 .event-pairings {
   padding: clamp(4.5rem, 8vw, 7rem) 0;
-  background: var(--cream-light);
+  background: var(--brand-cream-light);
 }
 
 .pairings-intro {
@@ -168,7 +168,7 @@ main {
 .pairings-intro > p {
   max-width: 400px;
   margin: 0 0 0.4rem auto;
-  color: color-mix(in srgb, var(--chocolate) 68%, transparent);
+  color: color-mix(in srgb, var(--brand-chocolate) 68%, transparent);
   font-size: 0.88rem;
 }
 
@@ -185,12 +185,12 @@ main {
   height: 100%;
   padding: clamp(1.5rem, 3vw, 2.35rem);
   border: 1px solid var(--border-soft);
-  background: var(--cream);
-  box-shadow: 0 18px 50px color-mix(in srgb, var(--chocolate) 7%, transparent);
+  background: var(--brand-cream);
+  box-shadow: 0 18px 50px color-mix(in srgb, var(--brand-chocolate) 7%, transparent);
 }
 
 .sample-card {
-  border-top: 3px solid var(--chocolate);
+  border-top: 3px solid var(--brand-chocolate);
 }
 
 .sample-card .pairing-card-header {
@@ -220,7 +220,7 @@ main {
   padding: 0.45rem 0.65rem;
   border: 1px solid currentColor;
   border-radius: 999px;
-  color: var(--wine);
+  color: var(--program-vine);
   font-size: 0.55rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -229,19 +229,19 @@ main {
 }
 
 [data-position='Accessible'] .pairing-position {
-  color: var(--coffee);
+  color: var(--brand-espresso);
 }
 
 [data-position='Complementary'] .pairing-position {
-  color: var(--beer);
+  color: var(--brand-saffron);
 }
 
 [data-position='Technical'] .pairing-position {
-  color: var(--wine);
+  color: var(--program-vine);
 }
 
 [data-position='Surprise'] .pairing-position {
-  color: var(--chocolate);
+  color: var(--brand-chocolate);
 }
 
 .pairing-match {
@@ -253,7 +253,7 @@ main {
 
 .pairing-kind {
   margin-bottom: 0.6rem;
-  color: var(--wine);
+  color: var(--program-vine);
   font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -283,7 +283,7 @@ main {
 
 .pairing-item dd {
   margin: 0;
-  color: color-mix(in srgb, var(--chocolate) 72%, transparent);
+  color: color-mix(in srgb, var(--brand-chocolate) 72%, transparent);
   font-size: 0.72rem;
   line-height: 1.4;
 }
@@ -296,7 +296,7 @@ main {
   place-items: center;
   border: 1px solid var(--border-soft);
   border-radius: 50%;
-  color: var(--beer);
+  color: var(--brand-saffron);
   font-family: var(--font-display);
   font-size: 1.15rem;
 }
@@ -323,7 +323,7 @@ main {
 .holding-content > p:not(.eyebrow) {
   max-width: 590px;
   margin: 2rem 0 0;
-  color: color-mix(in srgb, var(--chocolate) 72%, transparent);
+  color: color-mix(in srgb, var(--brand-chocolate) 72%, transparent);
 }
 
 .holding-actions {
@@ -344,8 +344,8 @@ main {
 
 .event-footer {
   padding: 1.5rem 0;
-  background: var(--coffee);
-  color: color-mix(in srgb, var(--cream) 72%, transparent);
+  background: var(--brand-espresso);
+  color: color-mix(in srgb, var(--brand-cream) 72%, transparent);
 }
 
 .event-footer-inner {
@@ -367,7 +367,7 @@ main {
 }
 
 .event-footer a:hover {
-  color: var(--cream-light);
+  color: var(--brand-cream-light);
 }
 
 @media (max-width: 900px) {

@@ -27,6 +27,12 @@ describe('Process', () => {
       'source',
       'host',
     ]);
+    expect(component.steps.map((step) => step.title)).toEqual([
+      'Discover',
+      'Design',
+      'Plan',
+      'Host',
+    ]);
     expect(fixture.nativeElement.querySelectorAll('article.step')).toHaveLength(4);
   });
 });

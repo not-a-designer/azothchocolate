@@ -145,6 +145,39 @@ describe('EventsPage', () => {
     expect(page.querySelector('a[href^="mailto:joel@azothchocolate.com"]')).toBeTruthy();
   });
 
+  it('should render the tasting-record resource links and coming-soon state', async () => {
+    await fixture.whenStable();
+    const page = fixture.nativeElement as HTMLElement;
+    const links = [
+      ...page.querySelectorAll<HTMLAnchorElement>('.resource-group:not(.tasting) .resource-link'),
+    ];
+
+    expect(links.map((link) => link.getAttribute('href'))).toEqual([
+      'https://www.makeminefine.com/',
+      'https://www.scienceofchocolate.com/',
+      'https://www.yaharachocolate.com/',
+      'https://www.chocolatesommelier.com/',
+      'https://www.tabalchocolate.com/',
+      'https://www.sjolinds.com/',
+      'https://blacksheepchocolate.com/',
+    ]);
+    expect(links.every((link) => link.target === '_blank')).toBe(true);
+    expect(links.every((link) => link.rel === 'noopener noreferrer')).toBe(true);
+    expect(page.querySelector('.resource-coming-soon')?.textContent).toContain('Coming soon');
+    expect(page.querySelector('.tasting-record-link')).toBeNull();
+  });
+
+  it('should replace the tasting placeholder when its URL is supplied', async () => {
+    fixture.componentRef.setInput('tastingRecordUrl', 'https://azothchocolate.com/tasting-record');
+    await fixture.whenStable();
+    const page = fixture.nativeElement as HTMLElement;
+    const recordLink = page.querySelector<HTMLAnchorElement>('.tasting-record-link');
+
+    expect(recordLink?.getAttribute('href')).toBe('https://azothchocolate.com/tasting-record');
+    expect(recordLink?.textContent).toContain('Open your tasting record');
+    expect(page.querySelector('.resource-coming-soon')).toBeNull();
+  });
+
   it('should render exactly four ordered chocolate and beverage pairings', async () => {
     fixture.componentRef.setInput('event', mockEvent);
     await fixture.whenStable();

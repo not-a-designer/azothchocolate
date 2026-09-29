@@ -18,4 +18,14 @@ describe('InquiryCta', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should invite a venue-specific conversation without fixed commercial terms', () => {
+    const element = fixture.nativeElement as HTMLElement;
+    const link = element.querySelector('a[href^="mailto:joel@azothchocolate.com"]');
+
+    expect(element.textContent).toContain('Tell Joel about your venue');
+    expect(element.textContent).toContain('fits your space and service');
+    expect(element.textContent).not.toMatch(/revenue split|fixed price/i);
+    expect(link).toBeTruthy();
+  });
 });

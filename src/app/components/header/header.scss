@@ -75,16 +75,16 @@
 
 .host-link {
   padding: 0.9rem 1.2rem;
-  border: 1px solid var(--chocolate);
-  background: var(--chocolate);
-  color: var(--cream-light);
+  border: 1px solid var(--brand-chocolate);
+  background: var(--brand-chocolate);
+  color: var(--brand-cream-light);
   transition:
     background-color 180ms ease,
     color 180ms ease;
 }
 
 .host-link:hover {
-  background: var(--coffee);
+  background: var(--brand-espresso);
 }
 
 .menu-toggle {
@@ -130,7 +130,7 @@
     display: grid;
     align-content: center;
     gap: 7px;
-    color: var(--chocolate);
+    color: var(--brand-chocolate);
     cursor: pointer;
   }
 
@@ -160,7 +160,7 @@
     align-items: flex-start;
     justify-content: center;
     gap: 1.2rem;
-    background: var(--cream-light);
+    background: var(--brand-cream-light);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-1rem);

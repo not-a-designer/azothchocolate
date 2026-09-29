@@ -2,7 +2,7 @@
 
 An editorial site for Azoth Chocolate's educational fine-chocolate tastings and beverage-pairing experiences.
 
-![Chocolate paired with wine, beer, and coffee](public/images/azoth-hero.png)
+![Guests sharing a guided chocolate tasting](public/images/azoth-hero-social.webp)
 
 ## About
 
@@ -82,6 +82,10 @@ src/
 
 Azoth's logo artwork and all four program marks live in `src/assets`. Keep their proportions intact when placing them in new layouts.
 
+The people-first homepage photographs are temporary generated assets showing only plain chocolate
+bars or broken bar pieces. Use the [photography brief](docs/photography-brief.md) when replacing them
+with an authentic staged shoot.
+
 The marketing page uses fragment navigation, while `/events` serves the current guest tasting guide. Hosting inquiries open a pre-addressed email to `joel@azothchocolate.com`; there is no form backend.
 
 ## Updating the event page
@@ -97,6 +101,8 @@ The permanent guest-facing event URL is
   `Technical`, or `Surprise`; chocolate-only events accept chocolate details only.
 - Update the event details and `updatedAt` label, then run the tests and production build.
 - Leave the completed event in place until the next event is ready to replace it.
+- Replace `tastingRecordUrl: null` in the same data file when the finished tasting-record
+  link is ready; until then, the resources section displays “Coming soon.”
 
 When no event has been entered, the route shows a branded holding state without sample products.
 

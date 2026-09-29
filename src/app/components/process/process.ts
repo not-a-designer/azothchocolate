@@ -12,29 +12,30 @@ export class Process {
   steps: ProcessStep[] = [
     {
       number: '01',
-      title: 'Consult',
+      title: 'Discover',
       icon: 'consult',
-      description: 'We discuss your venue, products, audience, event format, and goals.',
+      description: 'Discuss the venue, audience, products, service format, and goals.',
     },
     {
       number: '02',
-      title: 'Develop',
+      title: 'Design',
       icon: 'develop',
       description:
-        'We shape the tasting and select four fine chocolates, with beverage collaboration where applicable.',
+        'Select the tasting format and four chocolates, with beverage collaboration where applicable.',
     },
     {
       number: '03',
-      title: 'Source',
+      title: 'Plan',
       icon: 'source',
-      description: 'Azoth sources the fine chocolate selected specifically for your event.',
+      description:
+        'Agree on timing, guest count, promotion, ticketing, and service responsibilities.',
     },
     {
       number: '04',
       title: 'Host',
       icon: 'host',
       description:
-        'Azoth leads the guided experience while your venue supports the agreed service format.',
+        'Azoth sources the chocolate and leads the experience while your venue supports the agreed service plan.',
     },
   ];
 }

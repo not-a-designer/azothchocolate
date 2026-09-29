@@ -2,8 +2,8 @@
   position: relative;
   padding: var(--section-padding) 0 clamp(4rem, 7vw, 7rem);
   overflow: hidden;
-  background: var(--coffee);
-  color: var(--cream-light);
+  background: var(--brand-espresso);
+  color: var(--brand-cream-light);
 }
 
 .cacao-linework {
@@ -12,7 +12,7 @@
   left: clamp(5vw, 1rem, 4rem);
   width: min(20vw, 190px);
   aspect-ratio: 129.74 / 225.13;
-  background: var(--beer);
+  background: var(--brand-saffron);
   opacity: 0.14;
   -webkit-mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
   mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
@@ -30,7 +30,7 @@
 }
 
 .about .eyebrow {
-  color: var(--beer);
+  color: var(--brand-saffron);
 }
 
 .about .section-heading {
@@ -52,18 +52,37 @@
 .about-copy > p:not(.lead) {
   max-width: 620px;
   margin-bottom: 0;
-  color: color-mix(in srgb, var(--cream) 66%, transparent);
+  color: color-mix(in srgb, var(--brand-cream) 66%, transparent);
   font-size: 0.9rem;
 }
 
 .founder {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(2.5rem, 6vw, 6rem);
+  grid-template-columns: minmax(150px, 0.48fr) minmax(250px, 0.72fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 4rem);
   margin-top: clamp(0.5rem, 2vw, 1.5rem);
   padding: clamp(2rem, 4vw, 3.5rem);
-  background: color-mix(in srgb, var(--cream) 4.5%, transparent);
+  background: color-mix(in srgb, var(--brand-cream) 4.5%, transparent);
+}
+
+.founder-portrait {
+  width: min(100%, 240px);
+  aspect-ratio: 1;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--brand-cream) 18%, transparent);
+  border-radius: 50%;
+  background: var(--program-cocoa);
+  box-shadow: 0 1.25rem 3rem color-mix(in srgb, black 24%, transparent);
+}
+
+.founder-portrait img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .founder-intro .eyebrow {
@@ -81,7 +100,7 @@
 .founder-intro > p:last-child {
   max-width: 560px;
   margin: 0;
-  color: color-mix(in srgb, var(--cream) 68%, transparent);
+  color: color-mix(in srgb, var(--brand-cream) 68%, transparent);
   font-size: 0.9rem;
 }
 
@@ -102,7 +121,7 @@
 .credentials strong {
   margin-bottom: 0.5rem;
   //display: block;
-  color: var(--beer);
+  color: var(--brand-saffron);
   font-family: var(--font-display);
   font-size: 1.65rem;
   font-weight: 470;
@@ -110,7 +129,7 @@
 
 .credentials span {
   display: block;
-  color: color-mix(in srgb, var(--cream) 60%, transparent);
+  color: color-mix(in srgb, var(--brand-cream) 60%, transparent);
   font-size: 0.68rem;
   line-height: 1.5;
 }
@@ -136,11 +155,20 @@
   .founder {
     grid-template-columns: 1fr;
   }
+
+  .founder-portrait {
+    width: min(220px, 70vw);
+    margin-inline: auto;
+  }
 }
 
 @media (max-width: 580px) {
   .founder {
     padding: 1.75rem 1.5rem;
+  }
+
+  .founder-portrait {
+    width: min(190px, 65vw);
   }
 
   .credentials {

@@ -31,12 +31,7 @@ describe('Experiences', () => {
       'wine',
       'cocoa',
     ]);
-    expect(cards.map((card) => card.querySelector('img')?.getAttribute('src'))).toEqual([
-      '/assets/coffee-1.svg',
-      '/assets/beer-1.svg',
-      '/assets/wine-1.svg',
-      '/assets/cocoa-1.svg',
-    ]);
+    expect(cards.every((card) => card.querySelector('.program-logo'))).toBe(true);
     expect(fixture.nativeElement.querySelector('.eyebrow')?.textContent).toContain(
       'Four Ways to Taste',
     );

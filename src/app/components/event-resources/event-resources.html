@@ -1,0 +1,59 @@
+<section class="event-resources" aria-labelledby="resources-title">
+  <div class="container">
+    <header class="resources-intro">
+      <div>
+        <p class="eyebrow">Chocolate Resources</p>
+        <h2 id="resources-title" class="section-heading">Continue exploring.</h2>
+      </div>
+      <p>
+        The learning does not end with the last sample. Use these tasting-record resources to learn,
+        find fine chocolate, and explore locally.
+      </p>
+    </header>
+
+    <div class="resource-grid">
+      @for (group of resourceGroups; track group.modifier) {
+        <article class="resource-group" [class]="group.modifier">
+          <h3>{{ group.title }}</h3>
+          <ul class="resource-links">
+            @for (link of group.links; track link.href) {
+              <li>
+                <a
+                  class="resource-link"
+                  [href]="link.href"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  [attr.aria-label]="link.label + ' (opens in a new tab)'"
+                >
+                  <span>{{ link.label }}</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+            }
+          </ul>
+        </article>
+      }
+
+      <article class="resource-group tasting">
+        <h3>Tasting</h3>
+        @if (tastingRecordUrl(); as recordUrl) {
+          <a
+            class="resource-link tasting-record-link"
+            [href]="recordUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>Open your tasting record</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        } @else {
+          <div class="resource-coming-soon">
+            <span class="status-dot" aria-hidden="true"></span>
+            <strong>Coming soon</strong>
+          </div>
+          <p>Your finished tasting link will appear here when it is ready.</p>
+        }
+      </article>
+    </div>
+  </div>
+</section>

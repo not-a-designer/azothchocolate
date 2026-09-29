@@ -24,7 +24,13 @@ describe('About', () => {
     const highlights = element.querySelectorAll('.credentials > div');
 
     expect(element.textContent).toContain('Led by Joel Johnson');
-    expect(element.textContent).toContain('Albuquerque, New Mexico');
+    expect(element.textContent).toContain('warm, conversational, and approachable');
+    expect(element.textContent).toContain('approachable, social tasting experiences');
+
+    const portrait = element.querySelector<HTMLImageElement>('.founder-portrait img');
+    expect(portrait?.getAttribute('src')).toBe('/images/joel-johnson.webp');
+    expect(portrait?.getAttribute('loading')).toBe('lazy');
+    expect(portrait?.alt).toContain('Joel Johnson');
     expect(highlights.length).toBe(4);
   });
 });

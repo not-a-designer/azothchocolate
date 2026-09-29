@@ -1,7 +1,7 @@
 .footer {
   padding: 1rem 0 2rem;
-  background: var(--coffee);
-  color: var(--cream-light);
+  background: var(--brand-espresso);
+  color: var(--brand-cream-light);
 }
 
 .footer-grid {
@@ -42,7 +42,7 @@
 .footer-brand p {
   max-width: 330px;
   margin-bottom: 0;
-  color: color-mix(in srgb, var(--cream) 56%, transparent);
+  color: color-mix(in srgb, var(--brand-cream) 56%, transparent);
   font-size: 0.76rem;
 }
 
@@ -56,7 +56,7 @@
 .footer-nav > span,
 .footer-contact > span {
   margin-bottom: 0.65rem;
-  color: var(--beer);
+  color: var(--brand-saffron);
   font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -66,20 +66,20 @@
 .footer-nav a,
 .footer-contact a {
   width: fit-content;
-  color: color-mix(in srgb, var(--cream) 70%, transparent);
+  color: color-mix(in srgb, var(--brand-cream) 70%, transparent);
   font-size: 0.76rem;
   transition: color 160ms ease;
 }
 
 .footer-nav a:hover,
 .footer-contact a:hover {
-  color: var(--cream-light);
+  color: var(--brand-cream-light);
 }
 
 .copyright {
   padding-top: 1.5rem;
-  border-top: 1px solid color-mix(in srgb, var(--cream) 12%, transparent);
-  color: color-mix(in srgb, var(--cream) 36%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--brand-cream) 12%, transparent);
+  color: color-mix(in srgb, var(--brand-cream) 36%, transparent);
   font-size: 0.62rem;
   letter-spacing: 0.05em;
 }

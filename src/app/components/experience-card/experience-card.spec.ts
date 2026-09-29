@@ -32,9 +32,8 @@ describe('ExperienceCard', () => {
 
     expect(card.classList.contains('coffee')).toBe(true);
     expect(heading.textContent).toContain('Cacao & Cup');
-    expect(fixture.nativeElement.querySelector('img').getAttribute('src')).toBe(
-      '/assets/coffee-1.svg',
-    );
+    expect(fixture.nativeElement.querySelector('.program-logo')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('img')).toBeNull();
   });
 
   it('should render the chocolate-only program artwork and accessible heading', async () => {
@@ -48,10 +47,10 @@ describe('ExperienceCard', () => {
 
     const card = fixture.nativeElement.querySelector('article') as HTMLElement;
     const heading = fixture.nativeElement.querySelector('h3') as HTMLElement;
-    const image = fixture.nativeElement.querySelector('img') as HTMLImageElement;
+    const artwork = fixture.nativeElement.querySelector('.program-logo') as HTMLElement;
 
     expect(card.classList.contains('cocoa')).toBe(true);
     expect(heading.textContent).toContain('Cacao & Cocoa');
-    expect(image.getAttribute('src')).toBe('/assets/cocoa-1.svg');
+    expect(artwork).toBeTruthy();
   });
 });

@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <style>
-    .shell { fill: #513326; }
+    .shell { fill: #35140f; }
     .center { fill: #fbf6ed; }
 
     @media (prefers-color-scheme: dark) {
-      .shell { fill: #f4ebdd; }
+      .shell { fill: #f2ebdd; }
       .center { fill: #262321; }
     }
   </style>

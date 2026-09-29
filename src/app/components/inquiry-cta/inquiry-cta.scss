@@ -1,6 +1,6 @@
 .inquiry {
   padding: 0 0 4rem;
-  background: var(--coffee);
+  background: var(--brand-espresso);
 }
 
 .inquiry-inner {
@@ -10,8 +10,8 @@
   grid-template-columns: 0.5fr 1.4fr 0.75fr;
   align-items: center;
   gap: clamp(2rem, 5vw, 5rem);
-  background: var(--cream-light);
-  color: var(--chocolate);
+  background: var(--brand-cream-light);
+  color: var(--brand-chocolate);
 }
 
 .inquiry-decoration {
@@ -19,7 +19,7 @@
   aspect-ratio: 129.74 / 225.13;
   margin-inline: auto;
   background: currentColor;
-  color: var(--beer);
+  color: var(--brand-saffron);
   -webkit-mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
   mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
 }
@@ -44,7 +44,7 @@
 .inquiry-copy > p:not(.eyebrow) {
   max-width: 520px;
   margin: 0 auto;
-  color: color-mix(in srgb, var(--chocolate) 68%, transparent);
+  color: color-mix(in srgb, var(--brand-chocolate) 68%, transparent);
   font-size: 0.82rem;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .inquiry-action span:not(.btn span) {
-  color: color-mix(in srgb, var(--chocolate) 65%, transparent);
+  color: color-mix(in srgb, var(--brand-chocolate) 65%, transparent);
   font-size: 0.68rem;
 }
 

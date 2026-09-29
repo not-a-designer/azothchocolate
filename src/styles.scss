@@ -1,13 +1,16 @@
 :root {
-  --cream: #f4ebdd;
-  --cream-light: #fbf6ed;
-  --chocolate: #513326;
-  --coffee: #262321;
-  --wine: #a84655;
-  --beer: #d8ab54;
-  --neutral: #cab797;
-  --border-soft: color-mix(in srgb, var(--chocolate) 18%, transparent);
-  --border-light: color-mix(in srgb, var(--cream) 20%, transparent);
+  --brand-chocolate: #35140f;
+  --brand-cream: #f2ebdd;
+  --brand-cream-light: #fbf6ed;
+  --brand-espresso: #262321;
+  --brand-saffron: #d49a35;
+  --brand-tan: #cab797;
+  --program-cup: #a4513e;
+  --program-craft: #d49a35;
+  --program-vine: #7c3045;
+  --program-cocoa: #5f6338;
+  --border-soft: color-mix(in srgb, var(--brand-chocolate) 18%, transparent);
+  --border-light: color-mix(in srgb, var(--brand-cream) 20%, transparent);
   --font-display: 'Newsreader Variable', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --font-body: 'Manrope Variable', 'Segoe UI', sans-serif;
   --container-width: 1280px;
@@ -30,8 +33,8 @@ body {
   min-width: 320px;
   margin: 0;
   overflow-x: hidden;
-  background: var(--cream);
-  color: var(--chocolate);
+  background: var(--brand-cream);
+  color: var(--brand-chocolate);
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.65;
@@ -83,12 +86,12 @@ p {
 }
 
 ::selection {
-  background: var(--wine);
-  color: var(--cream-light);
+  background: var(--program-vine);
+  color: var(--brand-cream-light);
 }
 
 :focus-visible {
-  outline: 3px solid var(--beer);
+  outline: 3px solid var(--brand-saffron);
   outline-offset: 4px;
 }
 
@@ -99,7 +102,7 @@ p {
 
 .eyebrow {
   margin-bottom: 1.25rem;
-  color: var(--wine);
+  color: var(--program-vine);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.2em;
@@ -151,22 +154,22 @@ p {
 }
 
 .btn-primary {
-  background: var(--chocolate);
-  color: var(--cream-light);
+  background: var(--brand-chocolate);
+  color: var(--brand-cream-light);
 }
 
 .btn-primary:hover {
-  background: var(--coffee);
+  background: var(--brand-espresso);
 }
 
 .btn-secondary {
   border-color: var(--border-soft);
   background: transparent;
-  color: var(--chocolate);
+  color: var(--brand-chocolate);
 }
 
 .btn-secondary:hover {
-  border-color: var(--chocolate);
+  border-color: var(--brand-chocolate);
 }
 
 .text-link {
@@ -206,8 +209,8 @@ p {
   left: 1rem;
   z-index: 100;
   padding: 0.8rem 1rem;
-  background: var(--coffee);
-  color: var(--cream-light);
+  background: var(--brand-espresso);
+  color: var(--brand-cream-light);
   transform: translateY(-200%);
 }
 

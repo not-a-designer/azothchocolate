@@ -17,3 +17,6 @@ import { TastingEvent } from '../declarations/interfaces';
  * Both formats share title, optional schedule/location fields, introduction, and updatedAt.
  */
 export const activeEvent: TastingEvent | null = null;
+
+/** Replace `null` with the finished tasting-record URL when it is ready to publish. */
+export const tastingRecordUrl: string | null = null;

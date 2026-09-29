@@ -3,17 +3,22 @@
 }
 
 .experience-card {
-  --accent: var(--coffee);
+  --accent: var(--program-cup);
+  --card-foreground: var(--brand-cream-light);
+  --program-art: url('/assets/coffee-1.svg');
   position: relative;
-  min-height: 570px;
+  min-height: 470px;
   padding: clamp(1.5rem, 3vw, 2.5rem);
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  background: var(--cream-light);
-  box-shadow: 0 1rem 2.75rem color-mix(in srgb, var(--chocolate) 5.5%, transparent);
+  background:
+    radial-gradient(circle at 85% 10%, color-mix(in srgb, white 12%, transparent), transparent 32%),
+    linear-gradient(145deg, color-mix(in srgb, var(--accent) 92%, black), var(--accent));
+  box-shadow: 0 1rem 2.75rem color-mix(in srgb, var(--brand-chocolate) 9%, transparent);
+  color: var(--card-foreground);
   text-align: center;
   transition:
     transform 220ms ease,
@@ -22,86 +27,80 @@
 
 .experience-card:hover {
   transform: translateY(-6px);
-  padding: 1.5rem;
-  box-shadow: 0 1.5rem 3.5rem color-mix(in srgb, var(--chocolate) 11%, transparent);
-  .description {
-    font-size: 0.91rem;
-    transition: font-size 220ms ease-out;
-  }
+  box-shadow: 0 1.5rem 3.5rem color-mix(in srgb, var(--brand-chocolate) 18%, transparent);
 }
 
 .coffee {
-  --accent: var(--coffee);
+  --accent: var(--program-cup);
+  --program-art: url('/assets/coffee-1.svg');
 }
 
 .beer {
-  --accent: var(--beer);
+  --accent: var(--program-craft);
+  --card-foreground: var(--brand-chocolate);
+  --program-art: url('/assets/beer-1.svg');
 }
 
 .wine {
-  --accent: var(--wine);
+  --accent: var(--program-vine);
+  --program-art: url('/assets/wine-1.svg');
 }
 
 .cocoa {
-  --accent: var(--chocolate);
+  --accent: var(--program-cocoa);
+  --program-art: url('/assets/cocoa-1.svg');
 }
 
 .accent {
   position: absolute;
   inset: 0 0 auto;
-  height: 4px;
-  background: var(--accent);
-}
-
-.number {
-  position: absolute;
-  top: 1.4rem;
-  right: 1.6rem;
-  color: color-mix(in srgb, var(--chocolate) 28%, transparent);
-  font-family: var(--font-display);
-  font-size: 1.6rem;
+  height: 5px;
+  background: color-mix(in srgb, var(--card-foreground) 70%, transparent);
 }
 
 .program-logo {
-  width: clamp(7.25rem, 9vw, 8.5rem);
-  height: auto;
+  width: clamp(5.75rem, 8vw, 7rem);
+  aspect-ratio: 164 / 465;
   margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
   display: block;
+  background: currentColor;
+  -webkit-mask: var(--program-art) center / contain no-repeat;
+  mask: var(--program-art) center / contain no-repeat;
 }
 
 .description {
   max-width: 19rem;
   margin-bottom: 0;
-  color: color-mix(in srgb, var(--chocolate) 72%, transparent);
-  font-size: 0.88rem;
+  color: color-mix(in srgb, currentColor 82%, transparent);
+  font-size: 0.86rem;
   line-height: 1.65;
 }
 
 @media (max-width: 850px) {
   .experience-card {
-    min-height: 500px;
+    min-height: 440px;
     padding: 2rem;
   }
 
   .program-logo {
-    width: clamp(7rem, 18vw, 8rem);
+    width: clamp(5.5rem, 14vw, 6.5rem);
     margin-bottom: 1.75rem;
   }
 }
 
 @media (max-width: 580px) {
   .experience-card {
-    min-height: 470px;
+    min-height: 420px;
     padding: 1.75rem;
   }
 
   .program-logo {
-    width: 6.75rem;
+    width: 5.6rem;
     margin-bottom: 1.5rem;
   }
 
   .description {
-    font-size: 0.84rem;
+    font-size: 0.82rem;
     line-height: 1.6;
   }
 }

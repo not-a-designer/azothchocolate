@@ -39,7 +39,9 @@ describe('App routing', () => {
   it('should direct hosting links to the inquiry section or email', async () => {
     const compiled = await renderRoute('/');
     const links = [...compiled.querySelectorAll<HTMLAnchorElement>('a')];
-    const hostingLinks = links.filter((link) => link.textContent?.includes('Host an Experience'));
+    const hostingLinks = links.filter((link) =>
+      /Host an Experience|Bring Azoth to Your Venue/i.test(link.textContent ?? ''),
+    );
 
     expect(hostingLinks.length).toBeGreaterThan(0);
     expect(hostingLinks.some((link) => link.getAttribute('href') === '/host')).toBe(false);
@@ -58,10 +60,30 @@ describe('App routing', () => {
     expect(navigationLinks.some((link) => link.getAttribute('href') === '/events')).toBe(false);
   });
 
+  it('should publish canonical and large-image social metadata for the homepage', async () => {
+    await renderRoute('/');
+
+    expect(document.head.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(
+      'https://azothchocolate.com/',
+    );
+    expect(document.head.querySelector('meta[property="og:url"]')?.getAttribute('content')).toBe(
+      'https://azothchocolate.com/',
+    );
+    expect(document.head.querySelector('meta[property="og:image"]')?.getAttribute('content')).toBe(
+      'https://azothchocolate.com/images/azoth-social-share.webp',
+    );
+    expect(document.head.querySelector('meta[name="twitter:card"]')?.getAttribute('content')).toBe(
+      'summary_large_image',
+    );
+  });
+
   it('should render the event holding page at /events', async () => {
     const compiled = await renderRoute('/events');
 
     expect(compiled.querySelector('azoth-events-page')).toBeTruthy();
     expect(compiled.querySelector('#holding-title')?.textContent).toContain('Your tasting details');
+    expect(document.head.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(
+      'https://azothchocolate.com/events',
+    );
   });
 });

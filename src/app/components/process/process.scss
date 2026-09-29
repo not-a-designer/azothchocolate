@@ -1,6 +1,6 @@
 .process {
   padding: var(--section-padding) 0;
-  background: var(--cream);
+  background: var(--brand-cream);
 }
 
 .process-header {
@@ -16,7 +16,7 @@
 .process-intro {
   max-width: 620px;
   margin: 1.75rem auto 0;
-  color: color-mix(in srgb, var(--chocolate) 70%, transparent);
+  color: color-mix(in srgb, var(--brand-chocolate) 70%, transparent);
 }
 
 .steps {
@@ -37,7 +37,7 @@
   left: calc(50% + 3rem);
   z-index: 0;
   width: calc(100% - 6rem);
-  border-top: 1px dashed color-mix(in srgb, var(--chocolate) 28%, transparent);
+  border-top: 1px dashed color-mix(in srgb, var(--brand-chocolate) 28%, transparent);
 }
 
 .step-icon {
@@ -49,8 +49,8 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--chocolate);
-  color: var(--cream-light);
+  background: var(--brand-chocolate);
+  color: var(--brand-cream-light);
 }
 
 .step-icon azoth-icon {
@@ -61,7 +61,7 @@
 
 .step-number {
   display: block;
-  color: var(--beer);
+  color: var(--brand-saffron);
   font-family: var(--font-display);
   font-size: 1.5rem;
 }
@@ -76,7 +76,7 @@
 .step p {
   max-width: 16rem;
   margin: 0 auto;
-  color: color-mix(in srgb, var(--chocolate) 68%, transparent);
+  color: color-mix(in srgb, var(--brand-chocolate) 68%, transparent);
   font-size: 0.8rem;
   line-height: 1.65;
 }
@@ -111,7 +111,7 @@
     height: calc(100% - 4rem);
     display: block;
     border-top: 0;
-    border-left: 1px dashed color-mix(in srgb, var(--chocolate) 28%, transparent);
+    border-left: 1px dashed color-mix(in srgb, var(--brand-chocolate) 28%, transparent);
   }
 
   .step-icon {
