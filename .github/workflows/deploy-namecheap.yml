@@ -1,0 +1,58 @@
+name: Deploy Azoth Chocolate to Namecheap
+
+on:
+  push:
+    branches:
+      - main
+
+  # Allows you to manually run a deployment from GitHub too.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Install npm 12
+        run: npm install --global npm@12.0.1
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Angular site
+        run: npm run build -- --configuration production
+
+      - name: Verify build
+        run: |
+          test -f dist/cloudflare/browser/index.html
+          echo "Angular build completed successfully."
+          ls -la dist/cloudflare/browser/
+
+      - name: Install SFTP client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+
+      - name: Deploy to Namecheap
+        env:
+          SFTP_HOST: ${{ secrets.NAMECHEAP_HOST }}
+          SFTP_USER: ${{ secrets.NAMECHEAP_USER }}
+          SFTP_PASSWORD: ${{ secrets.NAMECHEAP_PASSWORD }}
+        run: |
+          lftp -u "$SFTP_USER","$SFTP_PASSWORD" "sftp://$SFTP_HOST:21098" <<EOF
+          set sftp:auto-confirm yes
+          mirror --reverse --verbose dist/cloudflare/browser/ /home/azotmidr/public_html/
+          bye
+          EOF
