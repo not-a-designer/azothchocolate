@@ -5,7 +5,6 @@ on:
     branches:
       - main
 
-  # Allows you to manually run a deployment from GitHub too.
   workflow_dispatch:
 
 permissions:
@@ -23,7 +22,6 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: '24'
-          package-manager-cache: false
 
       - name: Install npm 12
         run: npm install --global npm@12.0.1
@@ -40,7 +38,7 @@ jobs:
           echo "Angular build completed successfully."
           ls -la dist/cloudflare/browser/
 
-       - name: Install SSH password helper
+      - name: Install SSH password helper
         run: |
           sudo apt-get update
           sudo apt-get install -y sshpass
