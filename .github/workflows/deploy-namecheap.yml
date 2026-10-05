@@ -40,38 +40,38 @@ jobs:
           echo "Angular build completed successfully."
           ls -la dist/cloudflare/browser/
 
-      - name: Install SFTP client
+       - name: Install SSH password helper
         run: |
           sudo apt-get update
-          sudo apt-get install -y lftp
+          sudo apt-get install -y sshpass
 
       - name: Test Namecheap SFTP connection
         timeout-minutes: 2
         env:
           SFTP_HOST: ${{ secrets.NAMECHEAP_HOST }}
           SFTP_USER: ${{ secrets.NAMECHEAP_USER }}
-          SFTP_PASSWORD: ${{ secrets.NAMECHEAP_PASSWORD }}
+          SSHPASS: ${{ secrets.NAMECHEAP_PASSWORD }}
         run: |
-          lftp -u "$SFTP_USER","$SFTP_PASSWORD" -e "
-            set sftp:auto-confirm yes;
-            set net:timeout 15;
-            set net:max-retries 1;
-            pwd;
-            cls;
-            bye
-          " "sftp://$SFTP_HOST:21098"
+          sshpass -e sftp \
+            -o StrictHostKeyChecking=no \
+            -o ConnectTimeout=15 \
+            -P 21098 \
+            "$SFTP_USER@$SFTP_HOST" <<EOF
+          pwd
+          ls
+          bye
+          EOF
 
       - name: Deploy to Namecheap
         timeout-minutes: 5
         env:
           SFTP_HOST: ${{ secrets.NAMECHEAP_HOST }}
           SFTP_USER: ${{ secrets.NAMECHEAP_USER }}
-          SFTP_PASSWORD: ${{ secrets.NAMECHEAP_PASSWORD }}
+          SSHPASS: ${{ secrets.NAMECHEAP_PASSWORD }}
         run: |
-          lftp -u "$SFTP_USER","$SFTP_PASSWORD" -e "
-            set sftp:auto-confirm yes;
-            set net:timeout 20;
-            set net:max-retries 2;
-            mirror --reverse --verbose --parallel=1 dist/cloudflare/browser/ public_html/;
-            bye
-          " "sftp://$SFTP_HOST:21098"
+          sshpass -e scp \
+            -o StrictHostKeyChecking=no \
+            -o ConnectTimeout=15 \
+            -P 21098 \
+            -r dist/cloudflare/browser/. \
+            "$SFTP_USER@$SFTP_HOST:/home/$SFTP_USER/public_html/"
