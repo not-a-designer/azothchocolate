@@ -45,14 +45,33 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y lftp
 
-      - name: Deploy to Namecheap
+      - name: Test Namecheap SFTP connection
+        timeout-minutes: 2
         env:
           SFTP_HOST: ${{ secrets.NAMECHEAP_HOST }}
           SFTP_USER: ${{ secrets.NAMECHEAP_USER }}
           SFTP_PASSWORD: ${{ secrets.NAMECHEAP_PASSWORD }}
         run: |
-          lftp -u "$SFTP_USER","$SFTP_PASSWORD" "sftp://$SFTP_HOST:21098" <<EOF
-          set sftp:auto-confirm yes
-          mirror --reverse --verbose dist/cloudflare/browser/ /home/azotmidr/public_html/
-          bye
-          EOF
+          lftp -u "$SFTP_USER","$SFTP_PASSWORD" -e "
+            set sftp:auto-confirm yes;
+            set net:timeout 15;
+            set net:max-retries 1;
+            pwd;
+            cls;
+            bye
+          " "sftp://$SFTP_HOST:21098"
+
+      - name: Deploy to Namecheap
+        timeout-minutes: 5
+        env:
+          SFTP_HOST: ${{ secrets.NAMECHEAP_HOST }}
+          SFTP_USER: ${{ secrets.NAMECHEAP_USER }}
+          SFTP_PASSWORD: ${{ secrets.NAMECHEAP_PASSWORD }}
+        run: |
+          lftp -u "$SFTP_USER","$SFTP_PASSWORD" -e "
+            set sftp:auto-confirm yes;
+            set net:timeout 20;
+            set net:max-retries 2;
+            mirror --reverse --verbose --parallel=1 dist/cloudflare/browser/ public_html/;
+            bye
+          " "sftp://$SFTP_HOST:21098"
