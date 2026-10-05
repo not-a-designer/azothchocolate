@@ -1,0 +1,8 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/azotmidr/public_html/
+    - /usr/local/bin/npm ci
+    - /usr/local/bin/npx ng build --configuration production
+    - /bin/rm -rf ${DEPLOYPATH}*
+    - /bin/cp -R dist/azoth/browser/* ${DEPLOYPATH}
