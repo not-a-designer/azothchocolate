@@ -1,75 +1,30 @@
-name: Deploy Azoth Chocolate to Namecheap
+name: Deploy to Namecheap via FTP
 
 on:
   push:
     branches:
-      - main
-
-  workflow_dispatch:
-
-permissions:
-  contents: read
+      - main # Change this to 'master' if your default branch uses the old naming
 
 jobs:
-  build-and-deploy:
+  web-deploy:
+    name: 🎉 Deploy Website
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: '24'
+    # OPTIONAL: If your project needs a build step (like React, Vue, or Tailwind), 
+    # uncomment the lines below to build your project first.
+    # - name: Install Node.js & Build
+    #   run: |
+    #     npm install
+    #     npm run build
 
-      - name: Install npm 12
-        run: npm install --global npm@12.0.1
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Angular site
-        run: npm run build -- --configuration production
-
-      - name: Verify build
-        run: |
-          test -f dist/cloudflare/browser/index.html
-          echo "Angular build completed successfully."
-          ls -la dist/cloudflare/browser/
-
-      - name: Install SSH password helper
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y sshpass
-
-      - name: Test Namecheap SFTP connection
-        timeout-minutes: 2
-        env:
-          SFTP_HOST: ${{ secrets.NAMECHEAP_HOST }}
-          SFTP_USER: ${{ secrets.NAMECHEAP_USER }}
-          SSHPASS: ${{ secrets.NAMECHEAP_PASSWORD }}
-        run: |
-          sshpass -e sftp \
-            -o StrictHostKeyChecking=no \
-            -o ConnectTimeout=15 \
-            -P 21098 \
-            "$SFTP_USER@$SFTP_HOST" <<EOF
-          pwd
-          ls
-          bye
-          EOF
-
-      - name: Deploy to Namecheap
-        timeout-minutes: 5
-        env:
-          SFTP_HOST: ${{ secrets.NAMECHEAP_HOST }}
-          SFTP_USER: ${{ secrets.NAMECHEAP_USER }}
-          SSHPASS: ${{ secrets.NAMECHEAP_PASSWORD }}
-        run: |
-          sshpass -e scp \
-            -o StrictHostKeyChecking=no \
-            -o ConnectTimeout=15 \
-            -P 21098 \
-            -r dist/cloudflare/browser/. \
-            "$SFTP_USER@$SFTP_HOST:/home/$SFTP_USER/public_html/"
+    - name: 🚀 Upload files via FTP
+      uses: not-a-designer/FTP-Deploy-Action
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        # server-dir: ./public_html/ # Uncomment and change if you need to upload to a specific subfolder
