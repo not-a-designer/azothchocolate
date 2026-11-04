@@ -1,30 +1,48 @@
-name: Deploy to Namecheap via FTP
+name: Deploy Azoth Chocolate to Namecheap via FTP
 
 on:
   push:
     branches:
-      - main # Change this to 'master' if your default branch uses the old naming
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  web-deploy:
-    name: 🎉 Deploy Website
+  build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    # OPTIONAL: If your project needs a build step (like React, Vue, or Tailwind), 
-    # uncomment the lines below to build your project first.
-    # - name: Install Node.js & Build
-    #   run: |
-    #     npm install
-    #     npm run build
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
 
-    - name: 🚀 Upload files via FTP
-      uses: not-a-designer/FTP-Deploy-Action
-      with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        # server-dir: ./public_html/ # Uncomment and change if you need to upload to a specific subfolder
+      - name: Install npm 12
+        run: npm install --global npm@12.0.1
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Angular site
+        run: npm run build -- --configuration production
+
+      - name: Verify build
+        run: test -f dist/cloudflare/browser/index.html
+
+      - name: Deploy site via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER || secrets.NAMECHEAP_HOST }}
+          username: ${{ secrets.FTP_USERNAME || secrets.NAMECHEAP_USER }}
+          password: ${{ secrets.FTP_PASSWORD || secrets.NAMECHEAP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./dist/cloudflare/browser/
+          server-dir: ./public_html/
+          log-level: minimal
