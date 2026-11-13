@@ -32,11 +32,8 @@ describe('Experiences', () => {
       'cocoa',
     ]);
     expect(cards.every((card) => card.querySelector('.program-logo'))).toBe(true);
-    expect(fixture.nativeElement.querySelector('.eyebrow')?.textContent).toContain(
-      'Four Ways to Taste',
-    );
     expect(fixture.nativeElement.querySelector('.section-heading')?.textContent).toContain(
-      'Four perspectives',
+      'Four ways to explore chocolate',
     );
   });
 });

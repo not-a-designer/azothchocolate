@@ -23,8 +23,8 @@ describe('InquiryCta', () => {
     const element = fixture.nativeElement as HTMLElement;
     const link = element.querySelector('a[href^="mailto:joel@azothchocolate.com"]');
 
-    expect(element.textContent).toContain('Tell Joel about your venue');
-    expect(element.textContent).toContain('fits your space and service');
+    expect(element.textContent).toContain('Tell Joel what your guests should discover');
+    expect(element.textContent).toContain('Plan a Tasting');
     expect(element.textContent).not.toMatch(/revenue split|fixed price/i);
     expect(link).toBeTruthy();
   });

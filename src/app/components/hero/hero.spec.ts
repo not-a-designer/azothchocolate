@@ -19,15 +19,16 @@ describe('Hero', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should introduce both standalone tastings and paired experiences', () => {
+  it('should explain the educational tasting offer clearly', () => {
     const hero = fixture.nativeElement as HTMLElement;
-    const exploreLink = hero.querySelector<HTMLAnchorElement>('a[href="#experiences"]');
+    const journeyLink = hero.querySelector<HTMLAnchorElement>('a[href="#journey"]');
 
-    expect(hero.textContent).toContain('Guided Chocolate Experiences');
-    expect(hero.textContent).toContain('social, surprising, and anything but classroom-like');
-    expect(hero.textContent).toContain('focused four-chocolate tasting');
-    expect(hero.textContent).toContain('built around your coffee, beer, or wine');
-    expect(exploreLink?.textContent).toContain('Explore Experiences');
+    expect(hero.textContent).toContain('From bean to bar,');
+    expect(hero.textContent).toContain('taste the difference.');
+    expect(hero.textContent).toContain('compare industrial and craft approaches');
+    expect(hero.textContent).toContain('four carefully selected chocolates');
+    expect(hero.textContent).toContain('Chocolate, the universal solvent.');
+    expect(journeyLink?.textContent).toContain('See the Journey');
   });
 
   it('should prioritize only the people-first hero image', () => {

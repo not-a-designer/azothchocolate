@@ -15,28 +15,28 @@ export class Experiences {
       subtitle: 'Coffee',
       modifier: 'coffee',
       description:
-        'Taste how cacao origin, fermentation, and roast meet the nuanced character of specialty coffee.',
+        'Explore how origin, fermentation, and roast meet the character of specialty coffee.',
     },
     {
       name: 'Cacao & Craft',
       subtitle: 'Beer',
       modifier: 'beer',
       description:
-        'Explore fine chocolate alongside beer through malt, fermentation, bitterness, and aroma.',
+        'Explore chocolate alongside beer through malt, fermentation, bitterness, and aroma.',
     },
     {
       name: 'Cacao & Vine',
       subtitle: 'Wine',
       modifier: 'wine',
       description:
-        'Discover how fruit, tannin, acidity, fermentation, and origin connect chocolate and wine.',
+        'Discover how fruit, tannin, acidity, and origin connect chocolate with wine.',
     },
     {
       name: 'Cacao & Cocoa',
       subtitle: 'Chocolate',
       modifier: 'cocoa',
       description:
-        'Taste four fine chocolates while exploring cacao history, origin, craft production, and flavor - no beverage required.',
+        'Four fine chocolates, explored through origin, craft, and distinct flavor profiles.',
     },
   ];
 }

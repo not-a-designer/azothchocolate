@@ -32,7 +32,7 @@ describe('App routing', () => {
 
     expect(compiled.querySelector('azoth-home-page')).toBeTruthy();
     expect(compiled.querySelector('h1')?.textContent?.replace(/\s+/g, '')).toBe(
-      'Chocolate,theuniversalsolvent.',
+      'Frombeantobar,tastethedifference.',
     );
   });
 
@@ -40,7 +40,7 @@ describe('App routing', () => {
     const compiled = await renderRoute('/');
     const links = [...compiled.querySelectorAll<HTMLAnchorElement>('a')];
     const hostingLinks = links.filter((link) =>
-      /Host an Experience|Bring Azoth to Your Venue/i.test(link.textContent ?? ''),
+      /Plan a Tasting/i.test(link.textContent ?? ''),
     );
 
     expect(hostingLinks.length).toBeGreaterThan(0);

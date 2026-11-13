@@ -9,4 +9,15 @@ import { Experience } from '../../declarations/interfaces';
 export class ExperienceCard {
   @Input({ required: true })
   experience!: Experience;
+
+  get artwork(): string {
+    const artwork: Record<Experience['modifier'], string> = {
+      coffee: '/assets/coffee-1.svg',
+      beer: '/assets/beer-1.svg',
+      wine: '/assets/wine-1.svg',
+      cocoa: '/assets/cocoa-1.svg',
+    };
+
+    return artwork[this.experience.modifier];
+  }
 }

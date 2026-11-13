@@ -24,8 +24,9 @@ describe('About', () => {
     const highlights = element.querySelectorAll('.credentials > div');
 
     expect(element.textContent).toContain('Led by Joel Johnson');
-    expect(element.textContent).toContain('warm, conversational, and approachable');
-    expect(element.textContent).toContain('approachable, social tasting experiences');
+    expect(element.textContent).toContain('Professional chocolatier and fine chocolate maker');
+    expect(element.textContent).toContain('more than 25 internationally award-winning chocolates');
+    expect(element.textContent).toContain('Tempered and poured by Joel');
 
     const portrait = element.querySelector<HTMLImageElement>('.founder-portrait img');
     expect(portrait?.getAttribute('src')).toBe('/images/joel-johnson.webp');

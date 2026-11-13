@@ -1,15 +1,22 @@
 .experiences {
-  padding: var(--section-padding) 0;
+  padding: clamp(4.5rem, 7vw, 6rem) 0;
   background: var(--brand-cream);
 }
 
 .section-intro {
-  margin-bottom: clamp(3rem, 6vw, 5rem);
-  text-align: center;
+  max-width: 980px;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
 .section-intro .section-heading {
-  font-size: clamp(2.75rem, 4.8vw, 4.75rem);
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  line-height: 1;
+}
+
+.section-lead {
+  margin: 0.8rem 0 0;
+  color: color-mix(in srgb, var(--brand-chocolate) 74%, transparent);
+  font-size: 0.95rem;
 }
 
 .experience-grid {
@@ -17,7 +24,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-auto-rows: 1fr;
   align-items: stretch;
-  gap: clamp(1rem, 2vw, 2rem);
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 @media (max-width: 680px) {

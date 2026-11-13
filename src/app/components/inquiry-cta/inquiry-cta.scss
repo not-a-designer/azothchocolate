@@ -4,48 +4,37 @@
 }
 
 .inquiry-inner {
-  min-height: 230px;
-  padding: clamp(2rem, 4vw, 4rem);
+  min-height: 150px;
+  padding: clamp(1.8rem, 4vw, 3rem);
   display: grid;
-  grid-template-columns: 0.5fr 1.4fr 0.75fr;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: clamp(2rem, 5vw, 5rem);
-  background: var(--brand-cream-light);
-  color: var(--brand-chocolate);
+  background: var(--brand-espresso);
+  color: var(--brand-cream-light);
 }
 
 .inquiry-decoration {
-  width: min(100%, 82px);
-  aspect-ratio: 129.74 / 225.13;
-  margin-inline: auto;
-  background: currentColor;
-  color: var(--brand-chocolate);
-  -webkit-mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
-  mask: url('/assets/pod-logo-1.svg') center / contain no-repeat;
+  display: none;
 }
 
 .inquiry-copy {
-  text-align: center;
+  text-align: left;
 }
 
 .inquiry-copy .eyebrow {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--brand-saffron);
 }
 
 .inquiry-copy h2 {
-  margin-bottom: 1rem;
+  max-width: 54rem;
+  margin-bottom: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 4vw, 4rem);
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
   font-weight: 430;
   letter-spacing: -0.035em;
-  line-height: 1;
-}
-
-.inquiry-copy > p:not(.eyebrow) {
-  max-width: 520px;
-  margin: 0 auto;
-  color: color-mix(in srgb, var(--brand-chocolate) 68%, transparent);
-  font-size: 0.82rem;
+  line-height: 1.12;
 }
 
 .inquiry-action {
@@ -56,17 +45,29 @@
   text-align: center;
 }
 
+.inquiry-action .btn-primary {
+  background: var(--brand-cream-light);
+  color: var(--brand-chocolate);
+}
+
+.inquiry-action .btn-primary:hover {
+  background: var(--brand-cream);
+}
+
 .inquiry-action span:not(.btn span) {
-  color: color-mix(in srgb, var(--brand-chocolate) 65%, transparent);
+  color: color-mix(in srgb, var(--brand-cream) 70%, transparent);
   font-size: 0.68rem;
 }
 
 @media (max-width: 900px) {
   .inquiry-inner {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+    justify-items: start;
   }
 
-  .inquiry-decoration {
-    width: 68px;
+  .inquiry-action {
+    align-items: flex-start;
+    text-align: left;
   }
 }

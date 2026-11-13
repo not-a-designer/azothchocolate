@@ -2,19 +2,17 @@ import { DOCUMENT } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
 import { Component, inject, OnInit } from '@angular/core';
 import { About } from '../../components/about/about';
+import { EducationArc } from '../../components/education-arc/education-arc';
 import { Experiences } from '../../components/experiences/experiences';
 import { Footer } from '../../components/footer/footer';
-import { GuestExperience } from '../../components/guest-experience/guest-experience';
 import { Header } from '../../components/header/header';
 import { Hero } from '../../components/hero/hero';
-import { HostBenefits } from '../../components/host-benefits/host-benefits';
 import { InquiryCta } from '../../components/inquiry-cta/inquiry-cta';
-import { Process } from '../../components/process/process';
 import { setCanonicalUrl } from '../../utils/canonical';
 
-const HOME_TITLE = 'Guided Chocolate Tastings for Venues | Azoth Chocolate';
+const HOME_TITLE = 'Guided Chocolate Tastings & Pairings for Venues | Azoth Chocolate';
 const HOME_DESCRIPTION =
-  'Social, guided fine-chocolate tastings for venues and guests, from focused four-sample explorations to pairings with coffee, beer, and wine.';
+  'Follow cacao from origin to finished chocolate, compare industrial and craft chocolate, and taste four carefully selected chocolates paired with coffee, beer, wine, or on their own.';
 const HOME_URL = 'https://azothchocolate.com/';
 const HOME_SOCIAL_IMAGE = 'https://azothchocolate.com/images/azoth-social-share.webp';
 const HOME_SOCIAL_IMAGE_ALT =
@@ -24,10 +22,8 @@ const HOME_SOCIAL_IMAGE_ALT =
   imports: [
     Header,
     Hero,
-    HostBenefits,
+    EducationArc,
     Experiences,
-    GuestExperience,
-    Process,
     About,
     InquiryCta,
     Footer,

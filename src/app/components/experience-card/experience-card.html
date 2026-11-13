@@ -1,7 +1,8 @@
 <article class="experience-card" [class]="experience.modifier">
-  <span class="accent" aria-hidden="true"></span>
-
-  <h3 class="sr-only">{{ experience.name }}</h3>
-  <span class="program-logo" aria-hidden="true"></span>
-  <p class="description">{{ experience.description }}</p>
+  <div class="card-copy">
+    <p class="program-type">{{ experience.subtitle === 'Chocolate' ? 'Chocolate only' : 'Pair with ' + experience.subtitle }}</p>
+    <h3>{{ experience.name }}</h3>
+    <p class="description">{{ experience.description }}</p>
+  </div>
+  <img class="program-logo" [src]="artwork" [alt]="experience.name + ' program artwork'" width="164" height="465" loading="lazy" decoding="async" />
 </article>
