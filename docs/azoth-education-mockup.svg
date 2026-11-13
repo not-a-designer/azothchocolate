@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1280" viewBox="0 0 1440 1280" role="img" aria-labelledby="title desc">
+  <title id="title">Azoth Chocolate educational homepage mockup</title>
+  <desc id="desc">A homepage concept centered on chocolate education from cacao origin through making and tasting.</desc>
+  <defs>
+    <linearGradient id="hero" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#d7ae87"/>
+      <stop offset="0.52" stop-color="#98614b"/>
+      <stop offset="1" stop-color="#35140f"/>
+    </linearGradient>
+    <style>
+      .display { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -2px; }
+      .label { font-family: Arial, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; }
+      .body { font-family: Arial, sans-serif; font-size: 17px; }
+      .small { font-family: Arial, sans-serif; font-size: 15px; }
+    </style>
+    <clipPath id="heroClip">
+      <rect x="828" y="120" width="492" height="378"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1440" height="1280" fill="#f2ebdd"/>
+
+  <!-- Header -->
+  <rect width="1440" height="88" fill="#fbf6ed"/>
+  <text x="76" y="52" class="display" font-size="26" fill="#35140f" letter-spacing="4">AZOTH</text>
+  <text x="254" y="49" class="label" fill="#35140f">EXPERIENCES</text>
+  <text x="395" y="49" class="label" fill="#35140f">THE JOURNEY</text>
+  <text x="565" y="49" class="label" fill="#35140f">ABOUT</text>
+  <rect x="1194" y="23" width="170" height="42" fill="#35140f"/>
+  <text x="1279" y="49" text-anchor="middle" class="label" fill="#fbf6ed">PLAN A TASTING</text>
+
+  <!-- Hero -->
+  <rect y="88" width="1440" height="456" fill="#fbf6ed"/>
+  <rect x="828" y="120" width="492" height="378" fill="url(#hero)"/>
+  <image href="azoth-hero-social-preview.png" x="828" y="120" width="492" height="378" preserveAspectRatio="xMidYMid slice" clip-path="url(#heroClip)"/>
+
+  <text x="120" y="160" class="label" fill="#7c3045">GUIDED CHOCOLATE EDUCATION FOR VENUES</text>
+  <text x="120" y="250" class="display" font-size="74" fill="#35140f">From bean to bar,</text>
+  <text x="120" y="330" class="display" font-size="74" fill="#35140f">taste the difference.</text>
+  <text x="120" y="379" class="body" fill="#35140f">Trace cacao from origin to finished chocolate, compare industrial</text>
+  <text x="120" y="406" class="body" fill="#35140f">and craft approaches, then explore four carefully selected tastes.</text>
+  <text x="120" y="433" class="body" fill="#35140f">Pair them with what you pour—or follow a standalone progression.</text>
+  <rect x="120" y="464" width="160" height="42" fill="#35140f"/>
+  <text x="200" y="490" text-anchor="middle" class="label" fill="#fbf6ed">PLAN A TASTING</text>
+  <text x="317" y="490" class="label" fill="#35140f">SEE THE JOURNEY  →</text>
+
+  <!-- Educational arc -->
+  <rect y="544" width="1440" height="246" fill="#35140f"/>
+  <text x="120" y="590" class="label" fill="#d49a35">THE TASTING ARC</text>
+  <text x="120" y="640" class="display" font-size="45" fill="#fbf6ed">A little more context makes every bite better.</text>
+  <line x1="120" y1="677" x2="1320" y2="677" stroke="#f2ebdd" stroke-opacity=".25"/>
+
+  <g transform="translate(120 710)">
+    <text x="0" y="0" class="label" fill="#d49a35">01 · ORIGIN</text>
+    <text x="0" y="32" class="body" fill="#fbf6ed">Where cacao grows</text>
+    <text x="0" y="59" class="small" fill="#f2ebdd" opacity=".76">and how place shapes flavor.</text>
+  </g>
+  <g transform="translate(530 710)">
+    <text x="0" y="0" class="label" fill="#d49a35">02 · PROCESS</text>
+    <text x="0" y="32" class="body" fill="#fbf6ed">How chocolate is made</text>
+    <text x="0" y="59" class="small" fill="#f2ebdd" opacity=".76">Industrial versus craft.</text>
+  </g>
+  <g transform="translate(940 710)">
+    <text x="0" y="0" class="label" fill="#d49a35">03 · TASTE</text>
+    <text x="0" y="32" class="body" fill="#fbf6ed">Four selected chocolates</text>
+    <text x="0" y="59" class="small" fill="#f2ebdd" opacity=".76">Paired or standalone.</text>
+  </g>
+
+  <!-- Program formats -->
+  <rect y="790" width="1440" height="375" fill="#f2ebdd"/>
+  <text x="120" y="840" class="label" fill="#7c3045">CHOOSE THE FORMAT</text>
+  <text x="120" y="889" class="display" font-size="49" fill="#35140f">The story stays the same. The setting changes.</text>
+  <text x="120" y="920" class="small" fill="#35140f">Each program follows the same educational arc and ends with a focused tasting.</text>
+
+  <g transform="translate(120 965)">
+    <rect width="274" height="145" fill="#a4513e"/>
+    <rect width="274" height="5" fill="#fbf6ed"/>
+    <rect x="207" y="15" width="48" height="110" rx="24" fill="#fbf6ed" opacity=".92"/>
+    <image href="../src/assets/coffee-1.svg" x="217" y="22" width="28" height="96" preserveAspectRatio="xMidYMid meet"/>
+    <text x="22" y="39" class="label" fill="#fbf6ed">CACAO &amp; CUP</text>
+    <text x="22" y="70" class="small" fill="#fbf6ed">Chocolate + coffee</text>
+    <text x="22" y="108" class="small" fill="#fbf6ed" opacity=".8">Origin · roast · aroma</text>
+  </g>
+  <g transform="translate(410 965)">
+    <rect width="274" height="145" fill="#d49a35"/>
+    <rect width="274" height="5" fill="#35140f"/>
+    <rect x="207" y="15" width="48" height="110" rx="24" fill="#fbf6ed" opacity=".92"/>
+    <image href="../src/assets/beer-1.svg" x="217" y="22" width="28" height="96" preserveAspectRatio="xMidYMid meet"/>
+    <text x="22" y="39" class="label" fill="#35140f">CACAO &amp; CRAFT</text>
+    <text x="22" y="70" class="small" fill="#35140f">Chocolate + beer</text>
+    <text x="22" y="108" class="small" fill="#35140f" opacity=".8">Malt · fermentation · aroma</text>
+  </g>
+  <g transform="translate(700 965)">
+    <rect width="274" height="145" fill="#7c3045"/>
+    <rect width="274" height="5" fill="#fbf6ed"/>
+    <rect x="207" y="15" width="48" height="110" rx="24" fill="#fbf6ed" opacity=".92"/>
+    <image href="../src/assets/wine-1.svg" x="217" y="22" width="28" height="96" preserveAspectRatio="xMidYMid meet"/>
+    <text x="22" y="39" class="label" fill="#fbf6ed">CACAO &amp; VINE</text>
+    <text x="22" y="70" class="small" fill="#fbf6ed">Chocolate + wine</text>
+    <text x="22" y="108" class="small" fill="#fbf6ed" opacity=".8">Fruit · tannin · acidity</text>
+  </g>
+  <g transform="translate(990 965)">
+    <rect width="274" height="145" fill="#5f6338"/>
+    <rect width="274" height="5" fill="#fbf6ed"/>
+    <rect x="207" y="15" width="48" height="110" rx="24" fill="#fbf6ed" opacity=".92"/>
+    <image href="../src/assets/cocoa-1.svg" x="217" y="22" width="28" height="96" preserveAspectRatio="xMidYMid meet"/>
+    <text x="22" y="39" class="label" fill="#fbf6ed">CACAO &amp; COCOA</text>
+    <text x="22" y="70" class="small" fill="#fbf6ed">Four chocolates</text>
+    <text x="22" y="108" class="small" fill="#fbf6ed" opacity=".8">A standalone progression</text>
+  </g>
+
+  <!-- Close -->
+  <rect y="1165" width="1440" height="115" fill="#262321"/>
+  <text x="120" y="1212" class="display" font-size="38" fill="#fbf6ed">Tell Joel what your guests should discover.</text>
+  <rect x="1166" y="1190" width="176" height="42" fill="#fbf6ed"/>
+  <text x="1254" y="1216" text-anchor="middle" class="label" fill="#35140f">PLAN A TASTING</text>
+</svg>
