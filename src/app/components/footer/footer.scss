@@ -28,7 +28,7 @@
   height: 2.75rem;
   display: block;
   flex: 1 1 auto;
-  background: currentColor;
+  background: var(--brand-cream);
   -webkit-mask: url('/assets/logo-text-1.svg') left center / contain no-repeat;
   mask: url('/assets/logo-text-1.svg') left center / contain no-repeat;
 }
