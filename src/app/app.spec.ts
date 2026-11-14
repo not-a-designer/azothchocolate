@@ -32,7 +32,7 @@ describe('App routing', () => {
 
     expect(compiled.querySelector('azoth-home-page')).toBeTruthy();
     expect(compiled.querySelector('h1')?.textContent?.replace(/\s+/g, '')).toBe(
-      'Frombeantobar,tastethedifference.',
+      'Frombeantobar,tastethedifference',
     );
   });
 

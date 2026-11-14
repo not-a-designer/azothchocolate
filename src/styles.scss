@@ -25,12 +25,13 @@
 }
 
 html {
+  min-width: 360px;
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
 }
 
 body {
-  min-width: 320px;
+  min-width: 360px;
   margin: 0;
   overflow-x: hidden;
   background: var(--brand-cream);

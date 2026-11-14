@@ -39,10 +39,10 @@
 
 .inquiry-action {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   flex-direction: column;
   gap: 0.7rem;
-  text-align: center;
+  text-align: right;
 }
 
 .inquiry-action .btn-primary {
@@ -59,15 +59,40 @@
   font-size: 0.68rem;
 }
 
-@media (max-width: 900px) {
+@media (min-width: 801px) and (max-width: 960px) {
+  .inquiry-inner {
+    gap: clamp(1rem, 2vw, 1.5rem);
+    padding-inline: clamp(1.4rem, 3vw, 1.8rem);
+  }
+
+  .inquiry-copy h2 {
+    font-size: clamp(1.55rem, 2.65vw, 1.8rem);
+  }
+
+  .inquiry-action .btn-primary {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 800px) {
   .inquiry-inner {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    justify-items: start;
   }
 
   .inquiry-action {
-    align-items: flex-start;
-    text-align: left;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    text-align: center;
+  }
+
+  .inquiry-action .btn-primary {
+    width: 100%;
+  }
+
+  .inquiry-action span:not(.btn span) {
+    text-align: center;
   }
 }

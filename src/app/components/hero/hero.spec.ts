@@ -24,10 +24,10 @@ describe('Hero', () => {
     const journeyLink = hero.querySelector<HTMLAnchorElement>('a[href="#journey"]');
 
     expect(hero.textContent).toContain('From bean to bar,');
-    expect(hero.textContent).toContain('taste the difference.');
+    expect(hero.textContent).toContain('taste the difference');
     expect(hero.textContent).toContain('compare industrial and craft approaches');
     expect(hero.textContent).toContain('four carefully selected chocolates');
-    expect(hero.textContent).toContain('Chocolate, the universal solvent.');
+    expect(hero.textContent).toContain('Chocolate, the universal solvent');
     expect(journeyLink?.textContent).toContain('See the Journey');
   });
 

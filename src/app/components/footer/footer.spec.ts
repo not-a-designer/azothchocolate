@@ -25,4 +25,14 @@ describe('Footer', () => {
     expect(footer.textContent).toContain(String(new Date().getFullYear()));
     expect(footer.querySelector('.brand')?.getAttribute('aria-label')).toBe('Azoth Chocolate home');
   });
+
+  it('should place social links after the tasting link and before email', () => {
+    const contact = (fixture.nativeElement as HTMLElement).querySelector('.footer-contact');
+    const items = Array.from(contact?.children ?? []);
+
+    expect(items[0]?.textContent?.trim()).toBe('Connect');
+    expect(items[1]?.textContent?.trim()).toBe('Plan a Tasting');
+    expect(items[2]?.getAttribute('aria-label')).toBe('Social media');
+    expect(items[3]?.getAttribute('href')).toBe('mailto:joel@azothchocolate.com');
+  });
 });
