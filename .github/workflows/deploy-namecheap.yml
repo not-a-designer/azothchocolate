@@ -17,6 +17,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up PHP and Composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer:v2
+
+      - name: Install PHP dependencies
+        run: composer update --working-dir=backend --no-dev --prefer-dist --no-interaction --optimize-autoloader
+
+      - name: Validate PHP source
+        run: php -l backend/api/contact.php
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -32,8 +44,21 @@ jobs:
       - name: Build Angular site
         run: npm run build -- --configuration production
 
+      - name: Stage PHP endpoint and live smoke test
+        run: |
+          mkdir -p dist/cloudflare/browser/api dist/cloudflare/browser/vendor
+          cp backend/api/contact.php dist/cloudflare/browser/api/contact.php
+          cp -R backend/vendor/. dist/cloudflare/browser/vendor/
+          cp backend/vendor-protection.htaccess dist/cloudflare/browser/vendor/.htaccess
+          cp backend/contact-smoke-test.html dist/cloudflare/browser/contact-smoke-test.html
+
       - name: Verify build
-        run: test -f dist/cloudflare/browser/index.html
+        run: |
+          test -f dist/cloudflare/browser/index.html
+          test -f dist/cloudflare/browser/api/contact.php
+          test -f dist/cloudflare/browser/vendor/autoload.php
+          test -f dist/cloudflare/browser/vendor/.htaccess
+          test -f dist/cloudflare/browser/contact-smoke-test.html
 
       - name: Deploy site via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0

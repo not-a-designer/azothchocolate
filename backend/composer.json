@@ -1,0 +1,13 @@
+{
+  "name": "azoth/contact-endpoint",
+  "description": "Server-side contact endpoint for the Azoth Chocolate Angular site",
+  "type": "project",
+  "require": {
+    "php": ">=8.2",
+    "phpmailer/phpmailer": "7.2.0"
+  },
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true
+  }
+}

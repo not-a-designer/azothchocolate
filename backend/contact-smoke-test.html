@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="color-scheme" content="light">
+    <title>Azoth contact endpoint test</title>
+    <style>
+      :root { color-scheme: light; font-family: Arial, sans-serif; color: #35140f; background: #f2ebdd; }
+      body { margin: 0; padding: 2rem 1rem; }
+      main { max-width: 38rem; margin: 0 auto; padding: 2rem; background: #fbf6ed; border: 1px solid #cab797; }
+      h1 { margin-top: 0; font-family: Georgia, serif; }
+      p { line-height: 1.55; }
+      label { display: block; margin: 1rem 0 .35rem; font-weight: 700; }
+      input, select, textarea { box-sizing: border-box; width: 100%; padding: .7rem; border: 1px solid #8d7860; border-radius: 3px; font: inherit; background: #fff; }
+      fieldset { margin: 1rem 0; padding: 1rem; border: 1px solid #cab797; }
+      fieldset label { display: flex; align-items: center; gap: .5rem; font-weight: 400; }
+      fieldset input { width: auto; }
+      button { margin-top: 1rem; padding: .8rem 1.2rem; border: 0; background: #35140f; color: #fbf6ed; font: inherit; cursor: pointer; }
+      button:disabled { opacity: .55; cursor: wait; }
+      :focus-visible { outline: 3px solid #a4513e; outline-offset: 3px; }
+      #status { min-height: 1.5rem; }
+      .warning { padding: .8rem; background: #f3dfca; }
+      .trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+    </style>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>Contact endpoint test</h1>
+      <p class="warning"><strong>Temporary test page:</strong> this is not the finished inquiry form. Remove it after confirming the live endpoint works.</p>
+      <p>Enter the public Turnstile site key, then submit a test inquiry. A successful test sends an email to the configured Azoth recipient.</p>
+
+      <form id="contact-test">
+        <label for="sitekey">Turnstile site key</label>
+        <input id="sitekey" autocomplete="off" required>
+
+        <label for="name">Your name</label>
+        <input id="name" value="Azoth endpoint test" required maxlength="120">
+
+        <label for="email">Reply-to email</label>
+        <input id="email" type="email" required maxlength="254">
+
+        <label for="venue">Venue name</label>
+        <input id="venue" value="Test venue" required maxlength="160">
+
+        <fieldset>
+          <legend>Experience interests</legend>
+          <label><input type="checkbox" name="programs" value="Cacao & Cup" checked> Cacao & Cup</label>
+          <label><input type="checkbox" name="programs" value="Cacao & Craft"> Cacao & Craft</label>
+          <label><input type="checkbox" name="programs" value="Cacao & Vine"> Cacao & Vine</label>
+          <label><input type="checkbox" name="programs" value="Cacao & Cocoa"> Cacao & Cocoa</label>
+        </fieldset>
+
+        <div class="trap" aria-hidden="true">
+          <label for="website">Leave this field empty</label>
+          <input id="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div id="turnstile-widget"></div>
+        <button id="submit" type="submit" disabled>Send test inquiry</button>
+        <p id="status" role="status" aria-live="polite"></p>
+      </form>
+    </main>
+    <script>
+      let turnstileToken = '';
+      let widgetId;
+      const form = document.querySelector('#contact-test');
+      const submitButton = document.querySelector('#submit');
+      const status = document.querySelector('#status');
+      const sitekeyInput = document.querySelector('#sitekey');
+
+      function renderWidget() {
+        if (!window.turnstile) {
+          status.textContent = 'Turnstile is still loading. Please wait a moment.';
+          return;
+        }
+        if (widgetId !== undefined) window.turnstile.remove(widgetId);
+        turnstileToken = '';
+        submitButton.disabled = true;
+        widgetId = window.turnstile.render('#turnstile-widget', {
+          sitekey: sitekeyInput.value.trim(),
+          theme: 'light',
+          callback: (token) => { turnstileToken = token; submitButton.disabled = false; status.textContent = ''; },
+          'expired-callback': () => { turnstileToken = ''; submitButton.disabled = true; status.textContent = 'Security check expired. Please complete it again.'; },
+          'error-callback': () => { turnstileToken = ''; submitButton.disabled = true; status.textContent = 'Security check failed to load. Refresh and try again.'; }
+        });
+      }
+
+      sitekeyInput.addEventListener('change', renderWidget);
+      sitekeyInput.addEventListener('blur', () => { if (sitekeyInput.value.trim() && widgetId === undefined) renderWidget(); });
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (!turnstileToken || !form.reportValidity()) return;
+        submitButton.disabled = true;
+        status.textContent = 'Sending test inquiry…';
+        const payload = {
+          name: document.querySelector('#name').value.trim(),
+          email: document.querySelector('#email').value.trim(),
+          venue: document.querySelector('#venue').value.trim(),
+          venueType: 'Endpoint test',
+          programs: [...form.querySelectorAll('input[name="programs"]:checked')].map((input) => input.value),
+          timing: '',
+          guestCount: '',
+          heardAbout: 'Endpoint test page',
+          message: 'This is a live test of the Azoth website inquiry endpoint.',
+          website: document.querySelector('#website').value,
+          turnstileToken
+        };
+
+        try {
+          const response = await fetch('/api/contact.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const result = await response.json();
+          status.textContent = result.message || (response.ok ? 'Test complete.' : 'The request failed.');
+          if (window.turnstile && widgetId !== undefined) window.turnstile.reset(widgetId);
+          turnstileToken = '';
+        } catch {
+          status.textContent = 'Could not reach the endpoint. Check the deployment and try again.';
+          if (window.turnstile && widgetId !== undefined) window.turnstile.reset(widgetId);
+          turnstileToken = '';
+        } finally {
+          submitButton.disabled = true;
+        }
+      });
+    </script>
+  </body>
+</html>

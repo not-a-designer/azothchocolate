@@ -5,6 +5,9 @@
 /tmp
 /out-tsc
 /bazel-out
+/.azoth-contact-config.php
+/backend/.env
+/backend/.env.*
 
 # Node
 /node_modules
