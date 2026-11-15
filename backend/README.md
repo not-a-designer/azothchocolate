@@ -31,6 +31,7 @@ Set the file to the most restrictive permissions cPanel allows while still letti
   "name": "Test contact",
   "email": "visitor@example.com",
   "venue": "Test venue",
+  "cityRegion": "Appleton, Wisconsin",
   "venueType": "Cafe",
   "programs": ["Cacao & Cup"],
   "timing": "This fall",
@@ -43,6 +44,8 @@ Set the file to the most restrictive permissions cPanel allows while still letti
 ```
 
 The endpoint verifies Turnstile server-side, validates the fields and program names, then sends a plain-text message via authenticated SMTP. The sender is the configured Azoth mailbox; the visitor address is Reply-To. It does not persist submissions.
+
+The Angular inquiry page reads the public Turnstile site key from the `cf-turnstile-site-key` meta tag in `src/index.html`. Set that meta content to the public site key before deployment. Never put the Turnstile secret in the frontend.
 
 ## Live smoke test
 

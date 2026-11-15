@@ -36,7 +36,7 @@ describe('App routing', () => {
     );
   });
 
-  it('should direct hosting links to the inquiry section or email', async () => {
+  it('should direct hosting links to the inquiry page and retain a direct email fallback', async () => {
     const compiled = await renderRoute('/');
     const links = [...compiled.querySelectorAll<HTMLAnchorElement>('a')];
     const hostingLinks = links.filter((link) =>
@@ -44,11 +44,8 @@ describe('App routing', () => {
     );
 
     expect(hostingLinks.length).toBeGreaterThan(0);
-    expect(hostingLinks.some((link) => link.getAttribute('href') === '/host')).toBe(false);
-    expect(hostingLinks.some((link) => link.getAttribute('href') === '#inquire')).toBe(true);
-    expect(hostingLinks.some((link) => link.getAttribute('href')?.startsWith('mailto:'))).toBe(
-      true,
-    );
+    expect(hostingLinks.every((link) => link.getAttribute('href') === '/inquire')).toBe(true);
+    expect(links.some((link) => link.getAttribute('href') === 'mailto:joel@azothchocolate.com')).toBe(true);
   });
 
   it('should keep the event page out of marketing navigation', async () => {
@@ -84,6 +81,20 @@ describe('App routing', () => {
     expect(compiled.querySelector('#holding-title')?.textContent).toContain('Your tasting details');
     expect(document.head.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(
       'https://azothchocolate.com/events',
+    );
+  });
+
+  it('should render the inquiry page with required fields and optional location', async () => {
+    const compiled = await renderRoute('/inquire');
+
+    expect(compiled.querySelector('azoth-inquire-page')).toBeTruthy();
+    expect(compiled.querySelector('#name[required]')).toBeTruthy();
+    expect(compiled.querySelector('#email[required]')).toBeTruthy();
+    expect(compiled.querySelector('#venue[required]')).toBeTruthy();
+    expect(compiled.querySelector('#city-region')).toBeTruthy();
+    expect(compiled.querySelector('#city-region[required]')).toBeFalsy();
+    expect(document.head.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(
+      'https://azothchocolate.com/inquire',
     );
   });
 });

@@ -1,0 +1,149 @@
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<azoth-header />
+
+<main id="main-content" class="inquire-page">
+  <section class="inquire-intro">
+    <div class="container">
+      <p class="eyebrow">Host an Azoth experience</p>
+      <h1 class="display-heading">Let’s plan<br />a tasting.</h1>
+      <p class="intro-copy">
+        Tell us a little about your venue and what you’d like your guests to discover. Joel will
+        follow up by email to start shaping an experience that fits.
+      </p>
+    </div>
+  </section>
+
+  <section class="form-section" aria-labelledby="form-title">
+    <div class="container form-container">
+      <div class="form-heading">
+        <p class="eyebrow">A few details</p>
+        <h2 id="form-title">Start the conversation</h2>
+        <p>Fields marked <span aria-hidden="true">*</span> are required.</p>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <fieldset class="form-group">
+          <legend>Your contact</legend>
+          <div class="field-grid two-columns">
+            <label class="field" for="name">
+              <span>Your name <span aria-hidden="true">*</span></span>
+              <input id="name" type="text" formControlName="name" autocomplete="name" maxlength="120" required [attr.aria-invalid]="showError(form.controls.name) ? 'true' : null" />
+              @if (showError(form.controls.name)) {
+                <small class="field-error">Please enter your name.</small>
+              }
+            </label>
+            <label class="field" for="email">
+              <span>Email address <span aria-hidden="true">*</span></span>
+              <input id="email" type="email" formControlName="email" autocomplete="email" maxlength="254" required [attr.aria-invalid]="showError(form.controls.email) ? 'true' : null" />
+              @if (showError(form.controls.email)) {
+                <small class="field-error">Enter a valid email address.</small>
+              }
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <legend>About your venue</legend>
+          <div class="field-grid two-columns">
+            <label class="field" for="venue">
+              <span>Venue or organization <span aria-hidden="true">*</span></span>
+              <input id="venue" type="text" formControlName="venue" autocomplete="organization" maxlength="160" required [attr.aria-invalid]="showError(form.controls.venue) ? 'true' : null" />
+              @if (showError(form.controls.venue)) {
+                <small class="field-error">Please enter your venue or organization.</small>
+              }
+            </label>
+            <label class="field" for="city-region">
+              <span>City and state / region</span>
+              <input id="city-region" type="text" formControlName="cityRegion" autocomplete="address-level2" maxlength="160" placeholder="e.g. Appleton, Wisconsin" />
+            </label>
+            <label class="field" for="venue-type">
+              <span>Venue type</span>
+              <select id="venue-type" formControlName="venueType">
+                <option value="">Choose one</option>
+                @for (venueType of venueTypes; track venueType) {
+                  <option [value]="venueType">{{ venueType }}</option>
+                }
+              </select>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-group program-group" [class.invalid-group]="showError(form.controls.programs)">
+          <legend>Which experiences interest you? <span aria-hidden="true">*</span></legend>
+          <p class="field-hint">Choose one or more. We can help narrow it down together.</p>
+          <div class="program-options">
+            @for (program of programs; track program) {
+              <label class="check-option">
+                <input type="checkbox" [checked]="isProgramSelected(program)" (change)="toggleProgram(program, $any($event.target).checked)" />
+                <span>{{ program }}</span>
+              </label>
+            }
+          </div>
+          @if (showError(form.controls.programs)) {
+            <small class="field-error">Select at least one experience.</small>
+          }
+        </fieldset>
+
+        <fieldset class="form-group">
+          <legend>Planning ahead</legend>
+          <div class="field-grid two-columns">
+            <label class="field" for="timing">
+              <span>When are you hoping to host?</span>
+              <select id="timing" formControlName="timing">
+                <option value="">Choose a timeframe</option>
+                @for (timeframe of timeframes; track timeframe) {
+                  <option [value]="timeframe">{{ timeframe }}</option>
+                }
+              </select>
+            </label>
+            <label class="field" for="guest-count">
+              <span>Estimated guest count</span>
+              <select id="guest-count" formControlName="guestCount">
+                <option value="">Choose a range</option>
+                @for (range of guestRanges; track range) {
+                  <option [value]="range">{{ range }}</option>
+                }
+              </select>
+            </label>
+            <label class="field" for="heard-about">
+              <span>How did you hear about Azoth?</span>
+              <select id="heard-about" formControlName="heardAbout">
+                <option value="">Choose one</option>
+                @for (source of referralSources; track source) {
+                  <option [value]="source">{{ source }}</option>
+                }
+              </select>
+            </label>
+            <label class="field field-message" for="message">
+              <span>What would you like guests to discover?</span>
+              <textarea id="message" formControlName="message" rows="4" maxlength="3000" placeholder="Tell us about your audience, beverages, or the kind of experience you have in mind."></textarea>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="honeypot" aria-hidden="true">
+          <label for="website">Leave this field blank</label>
+          <input id="website" type="text" formControlName="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="security-check">
+          <div #turnstileTarget class="turnstile-target" aria-label="Cloudflare security check"></div>
+          <p class="security-note">Your information is sent directly to Azoth and is not stored on the website.</p>
+        </div>
+
+        <div class="submit-row">
+          <button class="btn btn-primary" type="submit" [disabled]="sending">
+            {{ sending ? 'Sending…' : 'Send inquiry' }}
+            <span aria-hidden="true">→</span>
+          </button>
+          <p class="email-fallback">Prefer email? <a href="mailto:joel@azothchocolate.com">joel&#64;azothchocolate.com</a></p>
+        </div>
+
+        <p class="form-status" [class.success]="statusKind === 'success'" [class.error]="statusKind === 'error'" role="status" aria-live="polite">{{ statusMessage }}</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<azoth-footer />

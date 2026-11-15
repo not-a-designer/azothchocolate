@@ -13,6 +13,11 @@ export const routes: Routes = [
     title: 'Event Tasting | Azoth Chocolate',
   },
   {
+    path: 'inquire',
+    loadComponent: () => import('./pages/inquire/inquire').then((page) => page.InquirePage),
+    title: 'Plan a Chocolate Tasting | Azoth Chocolate',
+  },
+  {
     path: '**',
     redirectTo: '',
   },

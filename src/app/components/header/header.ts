@@ -1,8 +1,9 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, HostListener, inject, OnDestroy, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'azoth-header',
   styleUrl: './header.scss',
   templateUrl: './header.html',

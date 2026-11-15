@@ -76,6 +76,7 @@ $cleanText = static function (mixed $value, int $maxLength): string {
 $name = $cleanText($request['name'] ?? null, 120);
 $email = $cleanText($request['email'] ?? null, 254);
 $venue = $cleanText($request['venue'] ?? null, 160);
+$cityRegion = $cleanText($request['cityRegion'] ?? null, 160);
 $venueType = $cleanText($request['venueType'] ?? null, 120);
 $timing = $cleanText($request['timing'] ?? null, 160);
 $guestCount = $cleanText($request['guestCount'] ?? null, 80);
@@ -160,6 +161,7 @@ $body = implode("\n", [
     'Name: ' . $name,
     'Email: ' . $email,
     'Venue: ' . $venue,
+    'Venue location: ' . ($cityRegion !== '' ? $cityRegion : 'Not provided'),
     'Venue type: ' . ($venueType !== '' ? $venueType : 'Not provided'),
     'Experience interests: ' . $programText,
     'Timing: ' . ($timing !== '' ? $timing : 'Not provided'),

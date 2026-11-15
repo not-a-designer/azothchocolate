@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { InquiryCta } from './inquiry-cta';
 
 describe('InquiryCta', () => {
@@ -8,6 +9,7 @@ describe('InquiryCta', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [InquiryCta],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(InquiryCta);
@@ -21,9 +23,9 @@ describe('InquiryCta', () => {
 
   it('should invite a venue-specific conversation without fixed commercial terms', () => {
     const element = fixture.nativeElement as HTMLElement;
-    const link = element.querySelector('a[href^="mailto:joel@azothchocolate.com"]');
+    const link = element.querySelector('a[routerLink="/inquire"]');
 
-    expect(element.textContent).toContain('Tell Joel what your guests should discover');
+    expect(element.textContent).toContain('what your guests should discover');
     expect(element.textContent).toContain('Plan a Tasting');
     expect(element.textContent).not.toMatch(/revenue split|fixed price/i);
     expect(link).toBeTruthy();

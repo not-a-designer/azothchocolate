@@ -1,6 +1,6 @@
 <header class="header">
   <div class="container header-inner">
-    <a href="#top" class="brand" aria-label="Azoth Chocolate home" (click)="closeMenu()">
+    <a href="/#top" class="brand" aria-label="Azoth Chocolate home" (click)="closeMenu()">
       <span class="brand-logo" aria-hidden="true"></span>
     </a>
 
@@ -22,10 +22,10 @@
       aria-label="Primary navigation"
       [class.open]="menuOpen()"
     >
-      <a href="#experiences" (click)="closeMenu()">Experiences</a>
-      <a href="#journey" (click)="closeMenu()">The Journey</a>
-      <a href="#about" (click)="closeMenu()">About</a>
-      <a href="#inquire" class="host-link" (click)="closeMenu()">Plan a Tasting</a>
+      <a href="/#experiences" (click)="closeMenu()">Experiences</a>
+      <a href="/#journey" (click)="closeMenu()">The Journey</a>
+      <a href="/#about" (click)="closeMenu()">About</a>
+      <a routerLink="/inquire" class="host-link" (click)="closeMenu()">Plan a Tasting</a>
     </nav>
   </div>
 </header>
