@@ -24,13 +24,19 @@ describe('Hero', () => {
   it('should explain the educational tasting offer clearly', () => {
     const hero = fixture.nativeElement as HTMLElement;
     const journeyLink = hero.querySelector<HTMLAnchorElement>('a[href="#journey"]');
+    const guestGuideLink = hero.querySelector<HTMLAnchorElement>('a[href="/events"]');
 
     expect(hero.textContent).toContain('From bean to bar,');
     expect(hero.textContent).toContain('taste the difference');
-    expect(hero.textContent).toContain('compare industrial and craft approaches');
-    expect(hero.textContent).toContain('four carefully selected chocolates');
-    expect(hero.textContent).toContain('Chocolate, the universal solvent');
+    expect(hero.textContent).toContain('Azoth partners with Wisconsin venues');
+    expect(hero.textContent).toContain('four carefully chosen chocolates');
+    expect(hero.querySelector('figure.hero-visual > .image-brand-line')?.textContent).toContain(
+      'Chocolate, the universal solvent',
+    );
+    expect(hero.querySelector('.hero-image .image-brand-line')).toBeNull();
     expect(journeyLink?.textContent).toContain('See the Journey');
+    expect(guestGuideLink?.textContent).toContain('View the tasting guide');
+    expect(hero.textContent).toContain('Already have a ticket?');
   });
 
   it('should prioritize only the people-first hero image', () => {

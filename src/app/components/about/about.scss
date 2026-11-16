@@ -90,12 +90,17 @@
 @media (max-width: 560px) {
   .founder {
     grid-template-columns: 1fr;
-    justify-items: start;
+    justify-items: stretch;
     gap: 1.25rem;
   }
 
   .founder-portrait {
     width: 7.5rem;
+    justify-self: center;
+  }
+
+  .founder-content .eyebrow {
+    text-align: center;
   }
 
   .credentials {

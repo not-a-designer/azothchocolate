@@ -51,12 +51,33 @@
   flex-wrap: wrap;
 }
 
-.brand-line {
+.guest-guide-link {
   margin: 1rem 0 0;
+  color: color-mix(in srgb, var(--brand-chocolate) 76%, transparent);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.guest-guide-link a {
+  color: var(--program-vine);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  padding-top: 0.25rem;
+}
+
+.guest-guide-link a:hover {
+  color: var(--brand-chocolate);
+}
+
+.image-brand-line {
+  margin: 0 0 0.75rem;
   color: var(--program-vine);
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: clamp(0.88rem, 1.1vw, 1.05rem);
   font-style: italic;
+  line-height: 1.25;
+  text-align: center;
 }
 
 .hero-visual {
